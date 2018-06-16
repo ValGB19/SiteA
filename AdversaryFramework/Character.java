@@ -6,9 +6,5 @@ public interface Character{
 	
 	abstract int getCosto();
 	
-	abstract void setCosto(int e);
-	
 	abstract int getDano();
-	
-	abstract void setDano(int e);
 }
