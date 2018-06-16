@@ -7,7 +7,7 @@
  * Copyright:    Copyright (c) Nazareno Aguirre 2003,2010<p>
  * Company:      None<p>
  * @author Nazareno Aguirre
- * @version 0.3
+ * @version 0.1
  */
  
 public interface State  {
@@ -31,5 +31,30 @@ public interface State  {
 	 */	
     abstract public String toString();
 
-
+    /** 
+	 * Retorna el tablero. This method must be implemented by all concrete
+	 * classes implementing State.
+	 * @return a Object[][]
+	 * @pre. true.
+	 * @post. return a Object[][]
+	 */
+    abstract public Object[][] getMapa();
+	
+    /** 
+	 * Retorna el ancho del tablero. This method must be implemented by all concrete
+	 * classes implementing State.
+	 * @return a int
+	 * @pre. true.
+	 * @post. Retorna el ancho del tablero
+	 */
+    abstract public int getSizeW();
+	
+    /** 
+	 * Retorna la altura del tablero. This method must be implemented by all concrete
+	 * classes implementing State.
+	 * @return a int
+	 * @pre. true.
+	 * @post. Retorna la altura del tablero
+	 */
+	abstract public int getSizeH();
 } 
