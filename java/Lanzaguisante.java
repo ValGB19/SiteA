@@ -18,16 +18,8 @@ public class Lanzaguisante extends Plantas{
 		return costo;
 	}
 	
-	public void setCosto(int e){
-		costo = e;
-	}
-	
 	public int getDano(){
 		return dano;
-	}
-	
-	public void setDano(int e){
-		dano = e;
 	}
 	
 	public void reciveDano(int d){
