@@ -2,20 +2,24 @@ package java;
 
 public class Girasol extends Plantas{
 	
+	//private final int dano = 0;
+	private final int costo = 5;
+	private final int vida = 50;
+	
 	public int getVida(){
-		return 0;
+		return vida;
 	}
 	
 	public void setVida(int e){
-		
+		vida = e;
 	}
 	
 	public int getCosto(){
-		return 0;
+		return costo;
 	}
 	
 	public void setCosto(int e){
-		
+		costo = e;
 	}
 	
 	public int getDano(){
@@ -24,5 +28,9 @@ public class Girasol extends Plantas{
 	
 	public void setDano(int e){
 		
+	}
+	
+	public void reciveDano(int d){
+		vida = vida - d;
 	}
 }

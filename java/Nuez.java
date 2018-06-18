@@ -2,12 +2,16 @@ package java;
 
 public class Nuez extends Plantas{
 	
+	private final int dano = 0;
+	private final int costo = 15;
+	private final int vida = 200;
+	
 	public int getVida(){
-		return 0;
+		return vida;
 	}
 	
 	public void setVida(int e){
-		e = 0;
+		vida = e;
 	}
 	
 	public int getCosto(){
@@ -15,7 +19,7 @@ public class Nuez extends Plantas{
 	}
 	
 	public void setCosto(int e){
-		e = 0;
+		costo = e;
 	}
 	
 	public int getDano(){
@@ -23,7 +27,10 @@ public class Nuez extends Plantas{
 	}
 	
 	public void setDano(int e){
-		
+		dano = e;
 	}
 	
+	public void reciveDano(int d){
+		vida = vida - d;
+	}
 }
