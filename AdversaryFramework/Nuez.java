@@ -1,5 +1,3 @@
-package plantasVszombie;
-
 public class Nuez extends Plantas{
 	
 	public int getVida(){
@@ -7,19 +5,19 @@ public class Nuez extends Plantas{
 	}
 	
 	public void setVida(int e){
-		
+		e = 0;
 	}
 	
 	public int getCosto(){
-		return 0;
+		return costo;
 	}
 	
 	public void setCosto(int e){
-		
+		e = 0;
 	}
 	
 	public int getDano(){
-		return 0;
+		return dano;
 	}
 	
 	public void setDano(int e){

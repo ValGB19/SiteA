@@ -1,5 +1,3 @@
-package plantasVszombie;
-
 public class Lanzaguisante extends Plantas{
 	
 	public int getVida(){
