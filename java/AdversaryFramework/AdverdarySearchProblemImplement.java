@@ -18,7 +18,8 @@ public class AdverdarySearchProblemImplement implements AdversarySearchProblem{
 
 	@Override
 	public boolean end(AdversarySearchState state) {
-		// TODO Auto-generated method stub
+		if(getSuccessors(state).size()==0)
+			return true;
 		return false;
 	}
 
