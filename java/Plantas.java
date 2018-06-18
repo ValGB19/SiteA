@@ -1,32 +1,6 @@
 package java;
 
-public class Plantas implements Character{
+public interface Plantas extends Character{
 	
-	private final int dano = 0;
-	private final int costo = 0;
-	private final int vida = 0;
-	
-	public int getVida(){
-		return 0;
-	}
-	
-	public void setVida(int e){
-		
-	}
-	
-	public int getCosto(){
-		return 0;
-	}
-	
-	public void setCosto(int e){
-		
-	}
-	
-	public int getDano(){
-		return 0;
-	}
-	
-	public void setDano(int e){
-		
-	}
+	public void reciveDano(int d);
 }

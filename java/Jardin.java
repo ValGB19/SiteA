@@ -58,7 +58,11 @@ class Jardin implements State{
 		for (int i = 0; i< mapa.length;i++ ) {
 			res += "|";	
 			for (int k = 0; k< mapa.length;k++ ) {
-				res +=  mapa[i][k].toString()+"|";
+				if (mapa[i][k] == null) {
+					res += "NN"+"|";
+				}else{
+					res +=  mapa[i][k].toString()+"|";
+				}
 			}
 			res += "\n";
 		}
