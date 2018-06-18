@@ -58,7 +58,6 @@ class Jardin implements State{
 			}
 			res += "\n";
 		}
-		
 		return res;
 	}
 }

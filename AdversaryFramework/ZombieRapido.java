@@ -1,13 +1,13 @@
 //import ;
 
-public class ZombieLento implements Zombie{
+public class ZombieRapido implements Zombie{
 	
 	private int vida;
-	private static final int dano = 2;
-	private static final int costo = 20;
-	private static final int vel = 1;
+	private static final int dano = 1;
+	private static final int costo = 20; // ver consigna
+	private static final int vel = 2;
 	
-	public ZombieLento(int vi){
+	public ZombieRapido(int vi){
 		vida = vi;
 	}
 
