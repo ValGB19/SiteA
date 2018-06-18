@@ -4,14 +4,39 @@ import java.AdversaryFramework.State;
 
 class Jardin implements State{
 	
-	int w;
-	int h;
-	Integer[][] mapa;
+	private int w;
+	private int h;
+	private Integer[][] mapa;
+	private int energiaZombie;
+	private int energiaJugador;
+	
 
 	public Jardin(int j, int k){
 		w = j;
 		h = k;
 		mapa = new Integer[w][h];
+		energiaJugador = 500;
+		energiaZombie = 500;
+	}
+	
+	/******************************************
+	 * Setters and getters
+	 ******************************************/
+
+	public int getEnergiaZombie(){
+		return energiaZombie;
+	}
+	
+	public int getEnergiaJugador(){
+		return energiaJugador;
+	}
+	
+	public void setEnergiaZombie(int e){
+		energiaZombie = e;
+	}
+	
+	public void setEnergiaJugador(int e){
+		energiaJugador = e;
 	}
 	
 	public Object[][] getMapa() {

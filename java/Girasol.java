@@ -1,6 +1,6 @@
 package java;
 
-public class Girasol extends Plantas{
+public class Girasol extends Planta{
 	
 	//private final int dano = 0;
 	private final int costo = 5;

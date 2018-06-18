@@ -1,6 +1,6 @@
 package java;
 
-public interface Plantas extends Character{
+public interface Planta extends Character{
 	
 	public void reciveDano(int d);
 }
