@@ -34,4 +34,8 @@ public class ZombieLento implements Zombie{
 	public void reciveDano(int d) {
 		vida -= d;
 	}
+	
+	public String toString(){
+		return "ZR";
+	}
 }
