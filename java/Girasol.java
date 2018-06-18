@@ -18,16 +18,8 @@ public class Girasol extends Plantas{
 		return costo;
 	}
 	
-	public void setCosto(int e){
-		costo = e;
-	}
-	
 	public int getDano(){
 		return 0;
-	}
-	
-	public void setDano(int e){
-		
 	}
 	
 	public void reciveDano(int d){
