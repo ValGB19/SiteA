@@ -1,3 +1,7 @@
+package java;
+
+import java.AdversaryFramework.State;
+
 class Jardin implements State{
 	
 	int w;
@@ -27,10 +31,11 @@ class Jardin implements State{
 	 * by every concrete class implementing State.
 	 * @param other is the state to compare 'this' to.
 	 * @return true iff 'this' is equal, as a state, to 'other'.
-	 * @pre. other!=null.
+	 * @pre. true.
 	 * @post. true is returned iff 'this' is equal, as a state, to 'other'.
 	 */	
     public boolean equals(State other){
+    	if(other == null) return false;
     	boolean res = other instanceof Jardin && other.getSizeH() == this.h && other.getSizeW() == this.w;
     	Object[][] otherMap = other.getMapa();
     	for (int i = 0; i < w && res; i++) {
@@ -38,6 +43,7 @@ class Jardin implements State{
 				res = otherMap[w][h].equals(this.mapa[w][h]);
 			}
 		}
+    	return res;
     }
   
 	/** 
@@ -56,9 +62,6 @@ class Jardin implements State{
 			}
 			res += "\n";
 		}
-		
 		return res;
 	}
-
-
 }

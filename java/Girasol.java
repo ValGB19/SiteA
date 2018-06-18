@@ -1,27 +1,28 @@
-public class Nuez extends Plantas{
+package java;
+
+public class Girasol extends Plantas{
 	
 	public int getVida(){
 		return 0;
 	}
 	
 	public void setVida(int e){
-		e = 0;
+		
 	}
 	
 	public int getCosto(){
-		return costo;
+		return 0;
 	}
 	
 	public void setCosto(int e){
-		e = 0;
+		
 	}
 	
 	public int getDano(){
-		return dano;
+		return 0;
 	}
 	
 	public void setDano(int e){
 		
 	}
-	
 }

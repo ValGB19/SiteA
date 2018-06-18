@@ -1,4 +1,10 @@
-public class Lanzaguisante extends Plantas{
+package java;
+
+public class Plantas implements Character{
+	
+	private final int dano = 0;
+	private final int costo = 0;
+	private final int vida = 0;
 	
 	public int getVida(){
 		return 0;

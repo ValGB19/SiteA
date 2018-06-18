@@ -1,8 +1,6 @@
-public class Plantas implements Character{
-	
-	private final int dano = 0;
-	private final int costo = 0;
-	private final int vida = 0;
+package java;
+
+public class Lanzaguisante extends Plantas{
 	
 	public int getVida(){
 		return 0;
