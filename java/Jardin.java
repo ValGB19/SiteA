@@ -1,3 +1,7 @@
+package java;
+
+import java.AdversaryFramework.State;
+
 class Jardin implements State{
 	
 	int w;

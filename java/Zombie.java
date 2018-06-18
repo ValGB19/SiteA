@@ -1,3 +1,5 @@
+package java;
+
 public interface Zombie extends Character{
 	
 	public int getVel();

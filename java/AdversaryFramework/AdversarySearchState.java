@@ -1,3 +1,5 @@
+package java.AdversaryFramework;
+
 /**
  * Interface which defines the basic requirements on states, needed 
  * when characterising problems as adversary search problems. State 

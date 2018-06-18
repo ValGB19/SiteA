@@ -1,3 +1,4 @@
+package java.AdversaryFramework;
 
 public abstract class AdversarySearchEngine<P extends AdversarySearchProblem<S>, S extends AdversarySearchState> {
 

@@ -1,4 +1,4 @@
-package plantasVszombie;
+package java;
 
 public class Girasol extends Plantas{
 	

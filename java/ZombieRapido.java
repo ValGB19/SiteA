@@ -1,4 +1,4 @@
-//import ;
+package java;
 
 public class ZombieRapido implements Zombie{
 	

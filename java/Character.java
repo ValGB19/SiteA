@@ -1,3 +1,5 @@
+package java;
+
 public interface Character{
 	
 	abstract int getVida();

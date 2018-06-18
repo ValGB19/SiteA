@@ -1,8 +1,8 @@
-package plantasVszombie;
+package java;
 
 public class Plantas implements Character{
 	
-	private final int daño = 0;
+	private final int dano = 0;
 	private final int costo = 0;
 	private final int vida = 0;
 	
