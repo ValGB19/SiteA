@@ -100,20 +100,43 @@ class Jardin implements AdversarySearchState{
 	}
 
 	public boolean isMax() {
-		boolean res = energiaZombie < new ZombieLento(5).getCosto();
 		
-		for (int i = 0; i < mapa[0].length && res; i++) {
-			res &= mapa[0][i] instanceof Zombie;
+		
+		boolean res = false;
+		
+		boolean empty = true;
+		
+		for (int i = 0; i < mapa[0].length && !res; i++) {
+			res |= mapa[0][i] instanceof Zombie;
 		}
 		
+		for (int i = 0; i < mapa.length && empty && !res; i++) {
+			for (int j = 0; j < mapa[0].length && empty && !res; j++) {
+				empty &= !(mapa[i][j] instanceof Zombie);
+			}
+		}
+		
+		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty;
 		return res;
 	}
 
-	public boolean equals(AdversarySearchState other) {
-		return false;
-	}
-
+	
 	public Object ruleApplied() {
 		return null;
+	}
+
+	@Override
+	public boolean equals(AdversarySearchState other) {
+		if(other == null) return false;
+    	boolean res = false;
+    	if(other instanceof Jardin) {
+    		Object[][] otherMap = ((Jardin) other).getMapa();
+        	for (int i = 0; i < w && res; i++) {
+    			for (int j = 0; j < h && res; j++) {
+    				res = otherMap[w][h].equals(this.mapa[w][h]);
+    			}
+    		}
+    	}
+    	return res;
 	}
 }
