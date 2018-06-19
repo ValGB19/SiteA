@@ -10,6 +10,15 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 	
 	Jardin inicial;
 	
+	private Problema() {
+		inicial = null;
+	}
+	
+	public Problema(Jardin j) {
+		inicial = j;
+	}
+	
+	
 	public Jardin initialState() {
 		return inicial;
 	}
@@ -24,20 +33,19 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		return false;
 	}
 
-	@Override
 	public int value(Jardin state) {
 		int carril=0;
+		Personage[][] jar = state.getMapa();
 		for(int i = 0; i<5; i++) {
 			for(int j = 0; j<10; j++) {
-				Personage jar = state.getMapa()[i][j]; ///R
-				if(jar instanceof Zombie){
-					carril=carril+jar.getVida();
+				if(jar[i][j] instanceof Zombie){
+					carril=carril+jar[i][j].getVida();
 				}else {
-					if(jar instanceof Planta) {
-						if(jar instanceof Girasol) {
-							carril=carril-(jar.getVida()/3);
+					if(jar[i][j] instanceof Planta) {
+						if(jar[i][j] instanceof Girasol) {
+							carril=carril-(jar[i][j].getVida()/3);
 						}else {
-							carril=carril-jar.getVida();
+							carril=carril-jar[i][j].getVida();
 						}
 					}
 				}

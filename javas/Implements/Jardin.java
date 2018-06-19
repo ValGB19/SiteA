@@ -1,4 +1,9 @@
-package javas.Implements;
+package javas.Implements; 
+
+/*************************************
+ * considerar la posibilidad de que jardin implemente Estado
+ * una nueva clase implementara AdversarySearchState
+*************************************/
 
 import javas.Interfaces.AdversaryFramework.State;
 import javas.Interfaces.Zombie;
@@ -18,9 +23,17 @@ class Jardin implements AdversarySearchState{
 	public Jardin(int j, int k){
 		w = 10;
 		h = 5;
-		mapa = new Personage[w][h];
-		energiaJugador = 500;
-		energiaZombie = 500;
+		mapa = new Personage[h][w];
+		energiaJugador = 100;
+		energiaZombie = 1500;
+	}
+	
+	public Jardin(int i, int k, Personage[][] p, int eJ, int ez){
+		w = i;
+		h = k;
+		mapa = p;
+		energiaJugador = eJ;
+		energiaZombie = ez;
 	}
 	
 	/******************************************
@@ -78,7 +91,7 @@ class Jardin implements AdversarySearchState{
     		Object[][] otherMap = ((Jardin) other).getMapa();
         	for (int i = 0; i < w && res; i++) {
     			for (int j = 0; j < h && res; j++) {
-    				res = otherMap[w][h].equals(this.mapa[w][h]);
+    				res = otherMap[i][j].equals(this.mapa[i][j]);
     			}
     		}
     	}
@@ -116,7 +129,7 @@ class Jardin implements AdversarySearchState{
 		boolean empty = true;
 		
 		for (int i = 0; i < mapa[0].length && !res; i++) {
-			res |= mapa[0][i] instanceof Zombie;
+			res |= mapa[i][0] instanceof Zombie;
 		}
 		
 		for (int i = 0; i < mapa.length && empty && !res; i++) {
@@ -128,13 +141,57 @@ class Jardin implements AdversarySearchState{
 		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty;
 		return res;
 	}
-
+	
+	public void place(int i, int j, Personage x) {
+		mapa[i][j] = x;
+	}
+	
+	int i1 = 0;
+	int i2 = 0;
+	int ac = 0;
 	
 	public Object ruleApplied() {
-		return null;
+		Jardin res = this.clone();
+		res.avanzar();
+		if (i1 == h) {
+			return null;
+		}
+
+		if (turno) {
+			
+			switch (ac) {
+			case 0:
+				res.place(i1, i2, new Girasol());
+				ac++;
+				break;
+			case 1:
+				res.place(i1, i2, new Lanzaguisante());
+				ac++;
+				break;
+			default:
+				res.place(i1, i2, new Nuez());
+				ac = 0;
+				if(i2 == w-1) {
+					i2 = 0;
+					i1++;
+				}
+				break;
+			}
+			
+		}else{
+			i2 = w; 
+			if (res.getMapa()[i1][i2] == null) {
+				if (ac == 0)
+					res.place(i1,i2,new ZombieLento()); 
+				else 
+					res.place(i1,i2,new ZombieRapido());
+				ac = (ac == 1)? 0: 1;
+			}
+			i1++;
+		}
+		return res;
 	}
 
-	@Override
 	public boolean equals(AdversarySearchState other) {
 		if(other == null) return false;
     	boolean res = false;
@@ -147,5 +204,9 @@ class Jardin implements AdversarySearchState{
     		}
     	}
     	return res;
+	}
+	
+	protected Jardin clone(){
+		return new Jardin(w,h,mapa,energiaJugador,energiaZombie);
 	}
 }

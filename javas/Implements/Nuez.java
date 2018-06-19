@@ -6,7 +6,7 @@ import javas.Interfaces.Planta;
 public class Nuez implements Planta{
 	
 	private final int dano = 10;
-	private final int costo = 15;
+	private final int costo = 75;
 	private int vida = 120;
 	
 	public int getVida(){
