@@ -1,6 +1,7 @@
-package java.Implements;
+package javas.Implements;
 
-import java.Interfaces.Planta;
+import javas.Interfaces.Personage;
+import javas.Interfaces.Planta;
 
 public class Nuez implements Planta{
 	
@@ -26,5 +27,12 @@ public class Nuez implements Planta{
 	
 	public void reciveDano(int d){
 		vida = vida - d;
+	}
+
+	public boolean equals(Personage other) {
+		if (other instanceof Nuez) {
+			return this.getVida() == other.getVida();
+		}
+		return false;
 	}
 }

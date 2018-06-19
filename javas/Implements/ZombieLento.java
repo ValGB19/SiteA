@@ -1,6 +1,7 @@
-package java.Implements;
+package javas.Implements;
 
-import java.Interfaces.Zombie;
+import javas.Interfaces.Personage;
+import javas.Interfaces.Zombie;
 
 public class ZombieLento implements Zombie{
 	
@@ -39,5 +40,12 @@ public class ZombieLento implements Zombie{
 	
 	public String toString(){
 		return "ZR";
+	}
+	
+	public boolean equals(Personage other) {
+		if (other instanceof ZombieLento) {
+			return this.getVida() == other.getVida();
+		}
+		return false;
 	}
 }

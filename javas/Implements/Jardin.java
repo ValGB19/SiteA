@@ -1,21 +1,23 @@
-package java.Implements;
+package javas.Implements;
 
-import java.Interfaces.AdversaryFramework.AdversarySearchState;
-import java.Interfaces.AdversaryFramework.State;
+import javas.Interfaces.AdversaryFramework.State;
+import javas.Interfaces.Zombie;
+import javas.Interfaces.Personage;
+import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 
 class Jardin implements AdversarySearchState{
 	
 	private int w;
 	private int h;
-	private Character[][] mapa;
+	private Personage[][] mapa;
 	private int energiaZombie;
 	private int energiaJugador;
 	
 
 	public Jardin(int j, int k){
-		w = j;
-		h = k;
-		mapa = new Character[w][h];
+		w = 10;
+		h = 5;
+		mapa = new Personage[w][h];
 		energiaJugador = 500;
 		energiaZombie = 500;
 	}
@@ -62,13 +64,15 @@ class Jardin implements AdversarySearchState{
 	 */	
     public boolean equals(State other){
     	if(other == null) return false;
-    	boolean res = other instanceof Jardin && other.getSizeH() == this.h && other.getSizeW() == this.w;
-    	Object[][] otherMap = other.getMapa();
-    	for (int i = 0; i < w && res; i++) {
-			for (int j = 0; j < h && res; j++) {
-				res = otherMap[w][h].equals(this.mapa[w][h]);
-			}
-		}
+    	boolean res = false;
+    	if(other instanceof Jardin) {
+    		Object[][] otherMap = ((Jardin) other).getMapa();
+        	for (int i = 0; i < w && res; i++) {
+    			for (int j = 0; j < h && res; j++) {
+    				res = otherMap[w][h].equals(this.mapa[w][h]);
+    			}
+    		}
+    	}
     	return res;
     }
   
@@ -96,7 +100,13 @@ class Jardin implements AdversarySearchState{
 	}
 
 	public boolean isMax() {
-		return false;
+		boolean res = energiaZombie < new ZombieLento(5).getCosto();
+		
+		for (int i = 0; i < mapa[0].length && res; i++) {
+			res &= mapa[0][i] instanceof Zombie;
+		}
+		
+		return res;
 	}
 
 	public boolean equals(AdversarySearchState other) {

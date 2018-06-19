@@ -1,7 +1,7 @@
-package java.Implements;
+package javas.Implements;
 
-import java.Interfaces.AdversaryFramework.AdversarySearchProblem;
-import java.Interfaces.AdversaryFramework.AdversarySearchState;
+import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
+import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem{

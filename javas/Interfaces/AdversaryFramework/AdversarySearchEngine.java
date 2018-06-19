@@ -1,4 +1,4 @@
-package java.Interfaces.AdversaryFramework;
+package javas.Interfaces.AdversaryFramework;
 
 public abstract class AdversarySearchEngine<P extends AdversarySearchProblem<S>, S extends AdversarySearchState> {
 
