@@ -25,7 +25,7 @@ public class Lanzaguisante implements Planta{
 		return dano;
 	}
 	
-	public void reciveDano(int d){
+	public void recibeDano(int d){
 		vida = vida - d;
 	}
 	

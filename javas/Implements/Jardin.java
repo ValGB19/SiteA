@@ -42,7 +42,7 @@ class Jardin implements AdversarySearchState{
 		energiaJugador = e;
 	}
 	
-	public Object[][] getMapa() {
+	public Personage[][] getMapa() {
 		return mapa;
 	}
 	

@@ -1,14 +1,18 @@
 package javas.Implements;
 
+import javas.Interfaces.Personage;
+import javas.Interfaces.Planta;
+import javas.Interfaces.Zombie;
 import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem<Jardin>{
-
+	
+	Jardin inicial;
+	
 	@Override
 	public Jardin initialState() {
-		// TODO Auto-generated method stub
-		return null;
+		return inicial;
 	}
 
 	@Override
@@ -26,8 +30,24 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 
 	@Override
 	public int value(Jardin state) {
-		// TODO Auto-generated method stub
-		return 0;
+		int carril=0;
+		for(int i = 0; i<5; i++) {
+			for(int j = 0; j<10; j++) {
+				Personage jar= state.getMapa()[i][j];
+				if(jar instanceof Zombie){
+					carril=carril+jar.getVida();
+				}else {
+					if(jar instanceof Planta) {
+						if(jar instanceof Girasol) {
+							carril=carril-(jar.getVida()/3);
+						}else {
+							carril=carril-jar.getVida();
+						}
+					}
+				}
+			}
+		}
+		return carril;
 	}
 
 	@Override
