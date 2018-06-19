@@ -1,12 +1,13 @@
 package java;
 
+import java.AdversaryFramework.AdversarySearchState;
 import java.AdversaryFramework.State;
 
-class Jardin implements State{
+class Jardin implements AdversarySearchState{
 	
 	private int w;
 	private int h;
-	private Integer[][] mapa;
+	private Character[][] mapa;
 	private int energiaZombie;
 	private int energiaJugador;
 	
@@ -14,7 +15,7 @@ class Jardin implements State{
 	public Jardin(int j, int k){
 		w = j;
 		h = k;
-		mapa = new Integer[w][h];
+		mapa = new Character[w][h];
 		energiaJugador = 500;
 		energiaZombie = 500;
 	}
@@ -92,5 +93,17 @@ class Jardin implements State{
 			res += "\n";
 		}
 		return res;
+	}
+
+	public boolean isMax() {
+		return false;
+	}
+
+	public boolean equals(AdversarySearchState other) {
+		return false;
+	}
+
+	public Object ruleApplied() {
+		return null;
 	}
 }
