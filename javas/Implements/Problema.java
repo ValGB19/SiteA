@@ -4,6 +4,8 @@ import javas.Interfaces.Personage;
 import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem<Jardin>{
@@ -14,8 +16,43 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		return inicial;
 	}
 
-	public List<Jardin> getSuccessors(Jardin state) {
-		return null;
+	public List<Jardin> getSuccessors(Jardin state){
+		List<Jardin> suc = new ArrayList();
+		Jardin aux;
+		Personage[][] jar = state.getMapa();
+		if(state.getTurno()) {
+			for(int i = 0; i<5; i++) {
+				for(int j = 0; j<9; j++) {
+					if(jar[i][j]==null) {
+						if(state.getEnergiaJugador()>=50) {
+							//aux = state.ruleApplied();
+							suc.add(aux);
+						}
+						if(state.getEnergiaJugador()>=75) {
+							//aux = state.ruleApplied();
+							suc.add(aux);
+						}
+						if(state.getEnergiaJugador()>=100) {
+							//aux = state.ruleApplied();
+							suc.add(aux);
+						}
+					}
+				}
+			}
+		}else {
+			for(int k = 0; k < 5; k++) {
+				if(state.getEnergiaZombie()>=75) {
+					//aux = state.ruleApplied();
+					suc.add(aux);
+				}
+				if(state.getEnergiaZombie()>=100) {
+					//aux = state.ruleApplied();
+					suc.add(aux);
+				}
+			}
+		}
+		state.avanzar();
+		return suc;
 	}
 
 	public boolean end(Jardin state) {
