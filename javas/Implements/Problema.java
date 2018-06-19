@@ -1,7 +1,6 @@
 package javas.Implements;
 
 import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
-import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem<Jardin>{
@@ -13,7 +12,7 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 	}
 
 	@Override
-	public List getSuccessors(Jardin state) {
+	public List<Jardin> getSuccessors(Jardin state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
