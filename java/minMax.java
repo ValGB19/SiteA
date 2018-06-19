@@ -16,10 +16,16 @@
 
 package java;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class minMax{
 	public int minMaxAB(Tree<Jardin> raiz, boolean jugador) {
-		List<Tree<Jardin>> childs = raiz.getChild();
+		List<Tree<Jardin>> childs = raiz.getChilds();
 		if(childs.size()==0)
-			return raiz.getRoot();
+			return raiz.getRoot().valEstado();
+		else {
+			for(int i )
+		}
 	}
 }
