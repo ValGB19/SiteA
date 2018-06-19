@@ -57,7 +57,7 @@ public class Girasol implements Planta{
 		capacSoles=capacSoles-sol;
 	}
 	
-	public void reciveDano(int d){
+	public void recibeDano(int d){
 		vida = vida - d;
 	}
 	

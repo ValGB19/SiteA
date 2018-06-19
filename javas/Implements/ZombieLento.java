@@ -34,7 +34,7 @@ public class ZombieLento implements Zombie{
 		return vel;
 	}
 
-	public void reciveDano(int d) {
+	public void recibeDano(int d) {
 		vida -= d;
 	}
 	
