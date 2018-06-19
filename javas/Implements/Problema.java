@@ -7,11 +7,12 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem<Jardin>{
-
+	
+	Jardin inicial;
+	
 	@Override
 	public Jardin initialState() {
-		// TODO Auto-generated method stub
-		return null;
+		return inicial;
 	}
 
 	@Override
