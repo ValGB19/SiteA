@@ -10,18 +10,14 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 	
 	Jardin inicial;
 	
-	@Override
 	public Jardin initialState() {
 		return inicial;
 	}
 
-	@Override
 	public List<Jardin> getSuccessors(Jardin state) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public boolean end(Jardin state) {
 		if(getSuccessors(state).size()==0)
 			return true;
@@ -33,7 +29,7 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		int carril=0;
 		for(int i = 0; i<5; i++) {
 			for(int j = 0; j<10; j++) {
-				Personage jar= state.getMapa()[i][j];
+				Personage jar = state.getMapa()[i][j]; ///R
 				if(jar instanceof Zombie){
 					carril=carril+jar.getVida();
 				}else {
@@ -50,14 +46,11 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		return carril;
 	}
 
-	@Override
 	public int minValue() {
 		return Integer.MIN_VALUE;
 	}
 
-	@Override
 	public int maxValue() {
 		return Integer.MAX_VALUE;
 	}
-	
 }

@@ -12,6 +12,7 @@ class Jardin implements AdversarySearchState{
 	private Personage[][] mapa;
 	private int energiaZombie;
 	private int energiaJugador;
+	private boolean turno = false; //false zombie true jugador
 	
 
 	public Jardin(int j, int k){
@@ -26,6 +27,14 @@ class Jardin implements AdversarySearchState{
 	 * Setters and getters
 	 ******************************************/
 
+	public void avanzar() {
+		turno = !turno; 
+	}
+	
+	public boolean getTurno() {
+		return turno;
+	}
+	
 	public int getEnergiaZombie(){
 		return energiaZombie;
 	}
