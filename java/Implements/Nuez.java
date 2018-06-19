@@ -1,10 +1,12 @@
-package java;
+package java.Implements;
 
-public class Nuez extends Plantas{
+import java.Interfaces.Planta;
+
+public class Nuez implements Planta{
 	
 	private final int dano = 0;
 	private final int costo = 15;
-	private final int vida = 200;
+	private int vida = 200;
 	
 	public int getVida(){
 		return vida;

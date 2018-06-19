@@ -1,4 +1,6 @@
-package java;
+package java.Implements;
+
+import java.Interfaces.Zombie;
 
 public class ZombieRapido implements Zombie{
 	

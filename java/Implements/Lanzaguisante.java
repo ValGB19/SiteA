@@ -1,10 +1,12 @@
-package java;
+package java.Implements;
 
-public class Lanzaguisante extends Planta{
+import java.Interfaces.Planta;
+
+public class Lanzaguisante implements Planta{
 	
 	private final int dano = 50;
 	private final int costo = 10;
-	private final int vida = 100;
+	private int vida = 100;
 	
 	public int getVida(){
 		return vida;

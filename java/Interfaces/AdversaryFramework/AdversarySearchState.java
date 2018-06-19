@@ -1,4 +1,4 @@
-package java.AdversaryFramework;
+package java.Interfaces.AdversaryFramework;
 
 /**
  * Interface which defines the basic requirements on states, needed 

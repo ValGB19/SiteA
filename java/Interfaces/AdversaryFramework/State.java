@@ -1,4 +1,4 @@
-package java.AdversaryFramework;
+package java.Interfaces.AdversaryFramework;
 /**
  * Title:        State<p>
  * Description:  Interface which defines the basic requirements on

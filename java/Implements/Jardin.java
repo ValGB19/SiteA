@@ -1,7 +1,7 @@
-package java;
+package java.Implements;
 
-import java.AdversaryFramework.AdversarySearchState;
-import java.AdversaryFramework.State;
+import java.Interfaces.AdversaryFramework.AdversarySearchState;
+import java.Interfaces.AdversaryFramework.State;
 
 class Jardin implements AdversarySearchState{
 	

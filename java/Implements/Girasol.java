@@ -1,10 +1,12 @@
-package java;
+package java.Implements;
 
-public class Girasol extends Planta{
+import java.Interfaces.Planta;
+
+public class Girasol implements Planta{
 	
 	//private final int dano = 0;
 	private final int costo = 5;
-	private final int vida = 50;
+	private int vida = 50;
 	
 	public int getVida(){
 		return vida;

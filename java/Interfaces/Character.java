@@ -1,4 +1,4 @@
-package java;
+package java.Interfaces;
 
 public interface Character{
 	

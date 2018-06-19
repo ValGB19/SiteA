@@ -1,7 +1,7 @@
-package java;
+package java.Implements;
 
-import java.AdversaryFramework.AdversarySearchEngine;
-import java.AdversaryFramework.AdversarySearchState;
+import java.Interfaces.AdversaryFramework.AdversarySearchEngine;
+import java.Interfaces.AdversaryFramework.AdversarySearchState;
 
 public class Juego extends AdversarySearchEngine{
 	
