@@ -5,9 +5,13 @@ import javas.Interfaces.Planta;
 
 public class Girasol implements Planta{
 	
-	//private final int dano = 0;
-	private final int costo = 5;
-	private int vida = 50;
+	private final int dano = 0;
+	private final int costo = 50;
+	private int vida = 60;
+	private int sol = 25;
+	private int capacSoles = 50;
+	
+//valu
 	
 	public int getVida(){
 		return vida;
@@ -22,7 +26,35 @@ public class Girasol implements Planta{
 	}
 	
 	public int getDano(){
-		return 0;
+		return dano;
+	}
+	
+	public int getSol() {
+		return sol;
+	}
+	
+	public void setSol(int n) {
+		sol = n;
+	}
+	
+	public int getCapacSoles() {
+		return capacSoles;
+	}
+	
+	public void setCapacSoles(int n) {
+		capacSoles = n;
+	}
+	
+	public void resetCapacSoles() {
+		capacSoles=50;
+	}
+	
+	public int TopCapacSoles() {
+		return  (capacSoles==0 ? 50 : 0);
+	}
+	
+	public void restCapacSoles() {
+		capacSoles=capacSoles-sol;
 	}
 	
 	public void reciveDano(int d){

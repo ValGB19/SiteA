@@ -5,9 +5,9 @@ import javas.Interfaces.Planta;
 
 public class Lanzaguisante implements Planta{
 	
-	private final int dano = 50;
+	private final int dano = 20;
 	private final int costo = 10;
-	private int vida = 100;
+	private int vida = 60;
 	
 	public int getVida(){
 		return vida;
