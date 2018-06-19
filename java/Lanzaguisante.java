@@ -1,6 +1,6 @@
 package java;
 
-public class Lanzaguisante extends Plantas{
+public class Lanzaguisante extends Planta{
 	
 	private final int dano = 50;
 	private final int costo = 10;
