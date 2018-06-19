@@ -10,7 +10,7 @@ public class Girasol implements Planta{
 	private int sol = 25;
 	private int capacSoles = 50;
 	
-
+//valu
 	
 	public int getVida(){
 		return vida;
