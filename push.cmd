@@ -1,4 +1,4 @@
 git add *
-git commit -m "automatic valuuuu"
+git commit -m "automatic"
 git push
 
