@@ -4,29 +4,29 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 import java.util.List;
 
-public abstract class Problema implements AdversarySearchProblem{
+public abstract class Problema implements AdversarySearchProblem<Jardin>{
 
 	@Override
-	public AdversarySearchState initialState() {
+	public Jardin initialState() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List getSuccessors(AdversarySearchState state) {
+	public List getSuccessors(Jardin state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean end(AdversarySearchState state) {
+	public boolean end(Jardin state) {
 		if(getSuccessors(state).size()==0)
 			return true;
 		return false;
 	}
 
 	@Override
-	public int value(AdversarySearchState state) {
+	public int value(Jardin state) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
