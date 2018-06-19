@@ -4,9 +4,9 @@ import java.Interfaces.Planta;
 
 public class Nuez implements Planta{
 	
-	private final int dano = 0;
+	private final int dano = 10;
 	private final int costo = 15;
-	private int vida = 200;
+	private int vida = 120;
 	
 	public int getVida(){
 		return vida;

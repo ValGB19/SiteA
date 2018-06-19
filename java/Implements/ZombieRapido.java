@@ -4,8 +4,8 @@ import java.Interfaces.Zombie;
 
 public class ZombieRapido implements Zombie{
 	
-	private int vida;
-	private static final int dano = 1;
+	private int vida=60;
+	private static final int dano = 30;
 	private static final int costo = 20; // ver consigna
 	private static final int vel = 2;
 	

@@ -4,8 +4,8 @@ import java.Interfaces.Zombie;
 
 public class ZombieLento implements Zombie{
 	
-	private int vida;
-	private static final int dano = 2;
+	private int vida=100;
+	private static final int dano = 30;
 	private static final int costo = 20;
 	private static final int vel = 1;
 	
