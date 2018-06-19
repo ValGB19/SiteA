@@ -29,12 +29,11 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 	}
 
 	@Override
-<<<<<<< HEAD
-	public int value(AdversarySearchState state) {
+	public int value(Jardin state) {
 		int carril=0;
 		for(int i = 0; i<5; i++) {
 			for(int j = 0; j<10; j++) {
-				Personage jar= ((Jardin) state).getMapa()[i][j];
+				Personage jar= state.getMapa()[i][j];
 				if(jar instanceof Zombie){
 					carril=carril+jar.getVida();
 				}else {
@@ -49,11 +48,6 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 			}
 		}
 		return carril;
-=======
-	public int value(Jardin state) {
-		// TODO Auto-generated method stub
-		return 0;
->>>>>>> faa14b670d05bc624983799c92ebc8610516e9e3
 	}
 
 	@Override
