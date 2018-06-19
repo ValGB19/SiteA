@@ -4,7 +4,6 @@ import javas.Interfaces.Personage;
 import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
-import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 import java.util.List;
 
 public abstract class Problema implements AdversarySearchProblem<Jardin>{
