@@ -4,7 +4,7 @@ import java.Interfaces.AdversaryFramework.AdversarySearchProblem;
 import java.Interfaces.AdversaryFramework.AdversarySearchState;
 import java.util.List;
 
-public abstract class AdverdarySearchProblemImplement implements AdversarySearchProblem{
+public abstract class Problema implements AdversarySearchProblem{
 
 	@Override
 	public AdversarySearchState initialState() {
