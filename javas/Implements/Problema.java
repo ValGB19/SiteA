@@ -34,15 +34,15 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 				for(int j = 0; j<9; j++) {
 					if(jar[i][j]==null) {
 						if(state.getEnergiaJugador()>=50) {
-							//aux = state.ruleApplied();
+							aux = state.ruleApplied();
 							suc.add(aux);
 						}
 						if(state.getEnergiaJugador()>=75) {
-							//aux = state.ruleApplied();
+							aux = state.ruleApplied();
 							suc.add(aux);
 						}
 						if(state.getEnergiaJugador()>=100) {
-							//aux = state.ruleApplied();
+							aux = state.ruleApplied();
 							suc.add(aux);
 						}
 					}
@@ -51,11 +51,11 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		}else {
 			for(int k = 0; k < 5; k++) {
 				if(state.getEnergiaZombie()>=75) {
-					//aux = state.ruleApplied();
+					aux = state.ruleApplied();
 					suc.add(aux);
 				}
 				if(state.getEnergiaZombie()>=100) {
-					//aux = state.ruleApplied();
+					aux = state.ruleApplied();
 					suc.add(aux);
 				}
 			}

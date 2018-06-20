@@ -150,7 +150,7 @@ class Jardin implements AdversarySearchState{
 	int i2 = 0;
 	int ac = 0;
 	
-	public Object ruleApplied() {
+	public Jardin ruleApplied() {
 		Jardin res = this.clone();
 		res.avanzar();
 		if (i1 == h) {
