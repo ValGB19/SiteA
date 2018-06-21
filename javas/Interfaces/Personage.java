@@ -1,6 +1,6 @@
-package java;
+package javas.Interfaces;
 
-public interface Character{
+public interface Personage{
 	
 	abstract int getVida();
 
@@ -9,4 +9,6 @@ public interface Character{
 	abstract int getCosto();
 	
 	abstract int getDano();
+	
+	abstract boolean equals(Personage other);
 }

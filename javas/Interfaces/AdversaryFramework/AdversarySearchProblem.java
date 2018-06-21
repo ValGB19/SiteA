@@ -1,4 +1,4 @@
-package java.AdversaryFramework;
+package javas.Interfaces.AdversaryFramework;
 
 import java.util.List;
 

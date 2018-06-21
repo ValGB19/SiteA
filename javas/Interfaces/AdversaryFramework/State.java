@@ -1,4 +1,4 @@
-package java.AdversaryFramework;
+package javas.Interfaces.AdversaryFramework;
 /**
  * Title:        State<p>
  * Description:  Interface which defines the basic requirements on
@@ -31,31 +31,4 @@ public interface State  {
 	 * @post. A text representation of the current state is returned.
 	 */	
     abstract public String toString();
-
-    /** 
-	 * Retorna el tablero. This method must be implemented by all concrete
-	 * classes implementing State.
-	 * @return a Object[][]
-	 * @pre. true.
-	 * @post. return a Object[][]
-	 */
-    abstract public Object[][] getMapa();
-	
-    /** 
-	 * Retorna el ancho del tablero. This method must be implemented by all concrete
-	 * classes implementing State.
-	 * @return a int
-	 * @pre. true.
-	 * @post. Retorna el ancho del tablero
-	 */
-    abstract public int getSizeW();
-	
-    /** 
-	 * Retorna la altura del tablero. This method must be implemented by all concrete
-	 * classes implementing State.
-	 * @return a int
-	 * @pre. true.
-	 * @post. Retorna la altura del tablero
-	 */
-	abstract public int getSizeH();
 } 
