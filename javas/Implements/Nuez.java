@@ -25,8 +25,9 @@ public class Nuez implements Planta{
 		return dano;
 	}
 	
-	public void recibeDano(int d){
-		vida = vida - d;
+	public Personage recibeDano(int d){
+		this.setVida(d);
+		return this;
 	}
 
 	public boolean equals(Personage other) {

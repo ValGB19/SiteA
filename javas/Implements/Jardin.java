@@ -6,6 +6,7 @@ package javas.Implements;
 *************************************/
 
 import javas.Interfaces.AdversaryFramework.State;
+import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.Personage;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
@@ -42,22 +43,20 @@ class Jardin implements AdversarySearchState{
 
 	public void avanzar() {
 		for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w; j++) {
+			for (int j = 0; j < w-1; j++) {
 				if (turno) {
-					switch (mapa[i][j].getClass()) {
-					case value:
-						
-						break;
-
-					default:
-						break;
+					if(mapa[i][j] instanceof Planta) {
+						if (mapa[i][j] instanceof Girasol) {
+							energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+						}else if (mapa[i][j+1] instanceof Zombie) {
+							mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
+						}
 					}
 				} else {
 
 				}
 			}
 		}
-		turno = !turno;
 	}
 	
 	public boolean getTurno() {
