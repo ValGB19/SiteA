@@ -42,18 +42,29 @@ class Jardin implements AdversarySearchState{
 	 ******************************************/
 
 	public void avanzar() {
-		for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w-1; j++) {
-				if (turno) {
-					if(mapa[i][j] instanceof Planta) {
-						if (mapa[i][j] instanceof Girasol) {
-							energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
-						}else if (mapa[i][j+1] instanceof Zombie) {
-							mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
+		if(!isMax()){
+			for (int i = 0; i < h; i++) {
+				for (int j = 0; j < w-1; j++) {
+					if (turno) {
+						if(mapa[i][j] instanceof Planta) {
+							if (mapa[i][j] instanceof Girasol) {
+								energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+							}else if (mapa[i][j+1] instanceof Zombie) {
+								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
+							}
+						}
+					} else {
+						if(mapa[i][j] instanceof Zombie) {
+							if (mapa[i][j-1] instanceof Planta) {
+								mapa[i][j-1] = ((Planta) mapa[i][j-1]).recibeDano(mapa[i][j].getDano()); 
+							}else{
+								for (int j2 = 0; j2 < ((Zombie) mapa[i][j]).getVel() && mapa[i][j-1] == null && j > 0; j2++) {
+									mapa[i][j-1] = mapa[i][j];
+									mapa[i][j] = null;
+								}
+							}
 						}
 					}
-				} else {
-
 				}
 			}
 		}
