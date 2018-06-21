@@ -42,10 +42,8 @@ class Jardin implements AdversarySearchState{
 
 	public void avanzar() {
 		if(turno){
-			for(int i<this.){
-				for(){
-
-				}
+			for(){
+				
 			}
 		}
 		turno = !turno; 
