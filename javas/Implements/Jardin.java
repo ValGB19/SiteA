@@ -6,6 +6,7 @@ package javas.Implements;
 *************************************/
 
 import javas.Interfaces.AdversaryFramework.State;
+import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.Personage;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
@@ -41,12 +42,27 @@ class Jardin implements AdversarySearchState{
 	 ******************************************/
 
 	public void avanzar() {
+<<<<<<< HEAD
 		if(turno){
 			for(){
 				
+=======
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w-1; j++) {
+				if (turno) {
+					if(mapa[i][j] instanceof Planta) {
+						if (mapa[i][j] instanceof Girasol) {
+							energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+						}else if (mapa[i][j+1] instanceof Zombie) {
+							mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
+						}
+					}
+				} else {
+
+				}
+>>>>>>> 4410bd37996e311a2f4dab1e4b23d20dd809305f
 			}
 		}
-		turno = !turno; 
 	}
 	
 	public boolean getTurno() {
@@ -130,17 +146,17 @@ class Jardin implements AdversarySearchState{
 		boolean res = false;
 		boolean empty = true;
 		
-		for (int i = 0; i < mapa[0].length && !res; i++) {
+		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
 			res |= mapa[i][0] instanceof Zombie;
 		}
 		
-		for (int i = 0; i < mapa.length && empty && !res; i++) {
+		for (int i = 0; i < mapa.length && empty && !res; i++) { //si quedan zombies en el mapa
 			for (int j = 0; j < mapa[0].length && empty && !res; j++) {
 				empty &= !(mapa[i][j] instanceof Zombie);
 			}
 		}
 		
-		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty;
+		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty; 
 		return res;
 	}
 	
