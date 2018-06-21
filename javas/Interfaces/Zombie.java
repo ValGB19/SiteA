@@ -4,5 +4,5 @@ public interface Zombie extends Personage{
 	
 	public int getVel();
 
-	public void recibeDano(int d);
+	public Personage recibeDano(int d);
 }

@@ -41,7 +41,23 @@ class Jardin implements AdversarySearchState{
 	 ******************************************/
 
 	public void avanzar() {
-		turno = !turno; 
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w; j++) {
+				if (turno) {
+					switch (mapa[i][j].getClass()) {
+					case value:
+						
+						break;
+
+					default:
+						break;
+					}
+				} else {
+
+				}
+			}
+		}
+		turno = !turno;
 	}
 	
 	public boolean getTurno() {
@@ -122,23 +138,20 @@ class Jardin implements AdversarySearchState{
 	}
 
 	public boolean isMax() {
-		
-		
 		boolean res = false;
-		
 		boolean empty = true;
 		
-		for (int i = 0; i < mapa[0].length && !res; i++) {
+		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
 			res |= mapa[i][0] instanceof Zombie;
 		}
 		
-		for (int i = 0; i < mapa.length && empty && !res; i++) {
+		for (int i = 0; i < mapa.length && empty && !res; i++) { //si quedan zombies en el mapa
 			for (int j = 0; j < mapa[0].length && empty && !res; j++) {
 				empty &= !(mapa[i][j] instanceof Zombie);
 			}
 		}
 		
-		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty;
+		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty; 
 		return res;
 	}
 	
