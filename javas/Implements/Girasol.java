@@ -58,8 +58,11 @@ public class Girasol implements Planta{
 	}
 	
 	public Personage recibeDano(int d){
-		this.setVida(d);
-		return this;
+		vida -= d;
+		if (vida > 0) {
+			return this;
+		}
+		return null;
 	}
 	
 	public boolean equals(Personage other) {

@@ -38,8 +38,11 @@ public class ZombieLento implements Zombie{
 	}
 
 	public Personage recibeDano(int d) {
-		this.setVida(d);
-		return this;
+		vida -= d;
+		if (vida > 0) {
+			return this;
+		}
+		return null;
 	}
 	
 	public String toString(){
