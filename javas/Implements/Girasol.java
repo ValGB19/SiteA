@@ -57,8 +57,9 @@ public class Girasol implements Planta{
 		capacSoles=capacSoles-sol;
 	}
 	
-	public void recibeDano(int d){
-		vida = vida - d;
+	public Personage recibeDano(int d){
+		this.setVida(d);
+		return this;
 	}
 	
 	public boolean equals(Personage other) {

@@ -41,6 +41,13 @@ class Jardin implements AdversarySearchState{
 	 ******************************************/
 
 	public void avanzar() {
+		if(turno){
+			for(int i<this.){
+				for(){
+
+				}
+			}
+		}
 		turno = !turno; 
 	}
 	
@@ -122,10 +129,7 @@ class Jardin implements AdversarySearchState{
 	}
 
 	public boolean isMax() {
-		
-		
 		boolean res = false;
-		
 		boolean empty = true;
 		
 		for (int i = 0; i < mapa[0].length && !res; i++) {
