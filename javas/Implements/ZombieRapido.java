@@ -38,8 +38,11 @@ public class ZombieRapido implements Zombie{
 	}
 
 	public void recibeDano(int d) {
-		this.setVida(d);
-		return this;
+		vida -= d;
+		if (vida > 0) {
+			return this;
+		}
+		return null;
 	}
 	
 	public String toString(){
