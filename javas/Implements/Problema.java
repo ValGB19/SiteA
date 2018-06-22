@@ -29,10 +29,10 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 		List<Jardin> suc = new ArrayList();
 		Jardin aux;
 		Personage[][] jar = state.getMapa();
+		jar.avanzar();
 		if(state.getTurno()) {
 			if(state.getEnergiaJugador()<50){
 				suc.add(state);
-				state.avanzar();
 				return suc;
 			}else{
 				for(int i = 0; i<5; i++) {
