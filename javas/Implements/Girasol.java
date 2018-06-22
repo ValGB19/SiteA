@@ -12,6 +12,10 @@ public class Girasol implements Planta{
 	private int capacSoles = 50;
 	
 //valu
+
+	public Girasol(int pena){
+		capacSoles += pena;
+	}
 	
 	public int getVida(){
 		return vida;
@@ -41,8 +45,8 @@ public class Girasol implements Planta{
 		return capacSoles;
 	}
 	
-	public void setCapacSoles(int n) {
-		capacSoles = n;
+	public void setCapacSoles() {
+		capacSoles -= 25;
 	}
 	
 	public void resetCapacSoles() {

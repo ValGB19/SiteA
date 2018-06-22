@@ -48,6 +48,11 @@ class Jardin implements AdversarySearchState{
 					if (turno) {
 						if(mapa[i][j] instanceof Planta) {
 							if (mapa[i][j] instanceof Girasol) {
+								if(((Girasol) mapa[i][j]).TopCapacSoles()==0){
+									energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+									((Girasol) mapa[i][j]).resetCapacSoles();
+								}
+								((Girasol) mapa[i][j]).setCapacSoles();
 								energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
 							}else if (mapa[i][j+1] instanceof Zombie) {
 								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
@@ -67,9 +72,10 @@ class Jardin implements AdversarySearchState{
 					}
 				}
 			}
+			turno = !turno;
 		}
 	}
-	
+
 	public boolean getTurno() {
 		return turno;
 	}
@@ -154,9 +160,11 @@ class Jardin implements AdversarySearchState{
 		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
 			res |= mapa[i][0] instanceof Zombie;
 		}
+		if(res)
+			return res;
 		
-		for (int i = 0; i < mapa.length && empty && !res; i++) { //si quedan zombies en el mapa
-			for (int j = 0; j < mapa[0].length && empty && !res; j++) {
+		for (int i = 0; i < mapa.length && empty; i++) { //si quedan zombies en el mapa
+			for (int j = 0; j < mapa[0].length && empty ; j++) {
 				empty &= !(mapa[i][j] instanceof Zombie);
 			}
 		}
