@@ -11,7 +11,7 @@ import javas.Interfaces.Zombie;
 import javas.Interfaces.Personage;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 
-class Jardin implements AdversarySearchState{
+public class Jardin implements AdversarySearchState{
 	
 	private int w;
 	private int h;
@@ -40,6 +40,39 @@ class Jardin implements AdversarySearchState{
 	/******************************************
 	 * Setters and getters
 	 ******************************************/
+
+	public boolean getTurno() {
+		return turno;
+	}
+	
+	public int getEnergiaZombie(){
+		return energiaZombie;
+	}
+	
+	public int getEnergiaJugador(){
+		return energiaJugador;
+	}
+	
+	public void setEnergiaZombie(int e){
+		energiaZombie = e;
+	}
+	
+	public void setEnergiaJugador(int e){
+		energiaJugador = e;
+	}
+	
+	public Personage[][] getMapa() {
+		return mapa;
+	}
+	
+	public int getSizeW() {
+		return w;
+	}
+	
+	public int getSizeH() {
+		return h;
+	}
+
 
 	public void avanzar() {
 		if(!isMax()){
@@ -74,38 +107,6 @@ class Jardin implements AdversarySearchState{
 			}
 			turno = !turno;
 		}
-	}
-
-	public boolean getTurno() {
-		return turno;
-	}
-	
-	public int getEnergiaZombie(){
-		return energiaZombie;
-	}
-	
-	public int getEnergiaJugador(){
-		return energiaJugador;
-	}
-	
-	public void setEnergiaZombie(int e){
-		energiaZombie = e;
-	}
-	
-	public void setEnergiaJugador(int e){
-		energiaJugador = e;
-	}
-	
-	public Personage[][] getMapa() {
-		return mapa;
-	}
-	
-	public int getSizeW() {
-		return w;
-	}
-	
-	public int getSizeH() {
-		return h;
 	}
 
 	/** 
@@ -177,50 +178,8 @@ class Jardin implements AdversarySearchState{
 		mapa[i][j] = x;
 	}
 	
-	int i1 = 0;
-	int i2 = 0;
-	int ac = 0;
-	
 	public Jardin ruleApplied() {
-		Jardin res = this.clone();
-		if (i1 == h) {
-			return null;
-		}
-
-		if (turno) {
-			
-			switch (ac) {
-			case 0:
-				res.place(i1, i2, new Girasol());
-				ac++;
-				break;
-			case 1:
-				res.place(i1, i2, new Lanzaguisante());
-				ac++;
-				break;
-			default:
-				res.place(i1, i2, new Nuez());
-				ac = 0;
-				if(i2 == w-1) {
-					i2 = 0;
-					i1++;
-				}
-				break;
-			}
-			
-		}else{
-			i2 = w; 
-			if (res.getMapa()[i1][i2] == null) {
-				if (ac == 0)
-					res.place(i1,i2,new ZombieLento()); 
-				else 
-					res.place(i1,i2,new ZombieRapido());
-				ac = (ac == 1)? 0: 1;
-			}
-			i1++;
-		}
-		res.avanzar();
-		return res;
+		return null;
 	}
 
 	public boolean equals(AdversarySearchState other) {

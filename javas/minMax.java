@@ -30,7 +30,7 @@ public class minMax{
 		}
 		else{
 			jugador = -jugador;
-			List<Jardin> hijos = new ArrayList();
+			List<Jardin> hijos = new ArrayList<Jardin>();
 			hijos = new Problema(new Jardin(1,2)).getSuccessors(raiz);
 			for (Jardin item : hijos){
 				if(item.isMax()){
