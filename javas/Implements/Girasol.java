@@ -12,6 +12,10 @@ public class Girasol implements Planta{
 	private int capacSoles = 50;
 	
 //valu
+	
+	public Girasol(){
+		
+	}
 
 	public Girasol(int pena){
 		capacSoles += pena;

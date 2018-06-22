@@ -24,15 +24,16 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 	public Jardin initialState() {
 		return inicial;
 	}
-
+	
+	
 	public List<Jardin> getSuccessors(Jardin state){
 		List<Jardin> suc = new ArrayList();
-		Jardin aux;
-		Personage[][] jar = state.getMapa();
-		jar.avanzar();
+		Jardin aux = state.clone();
+		aux.avanzar();
+		Personage[][] jar = aux.getMapa();
 		if(state.getTurno()) {
 			if(state.getEnergiaJugador()<50){
-				suc.add(state);
+				suc.add(aux);
 				return suc;
 			}else{
 				for(int i = 0; i<5; i++) {
@@ -56,7 +57,7 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 			}
 		}else{
 			if(state.getEnergiaZombie()<75){
-				suc.add(state);
+				suc.add(aux);
 				state.avanzar();
 				return suc;
 			}else{
@@ -72,7 +73,6 @@ public abstract class Problema implements AdversarySearchProblem<Jardin>{
 				}
 			}
 		}
-		state.avanzar();
 		return suc;
 	}
 
