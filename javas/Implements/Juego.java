@@ -45,6 +45,34 @@ int cota=0;//usa en el metodo comp sucesor
 			}
 			return masMejor;
 	}
+	
+	public int minMaxAB(JardinExt raiz, int profundidad, int alfa, int beta){
+		if(raiz.isMax() || profundidad <= 0 ){
+			return problem.value(raiz);
+		}else{
+			List<JardinExt> hijo = problem.getSuccessors(raiz);
+			for (int i = 0; i < hijo.size() && alfa < beta; i++){
+				if(!raiz.getTurno()){
+					alfa = Math.max(alfa, minMaxAB(hijo.get(i), profundidad-1, alfa, beta));
+				}else{
+					beta = Math.min(beta, minMaxAB(hijo.get(i), profundidad-1, alfa, beta));
+				}
+			}
+			if(raiz.getTurno()){
+				return beta;
+			}else{
+				return alfa;
+			}
+		}
+	}
+	
+	/*Funcion minMaxAB(n, alfa, beta) --> Valor!  
+	 *   Si n es hoja o esta a nivel maximo!    
+	 *       retornar valor(n)!
+	 *           Sino!
+	 *         Para cada hijo n_k de n y mientras alfa<beta hacer! 
+	 *                    Si n es Max!                alfa:= max(alfa, minMaxAB(n_k, alfa, beta))!            Sino!                beta:= min(beta, minMaxAB(n_k, alfa, beta))!            Fsi  !        Fpara!        Si n es Max!            retornar alfa!        Sino!            retornar beta!        Fsi!    Fsi ! Ffuncion
+*/
 
 	public void report() {
 		
