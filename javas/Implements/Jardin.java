@@ -9,13 +9,12 @@ import javas.Interfaces.AdversaryFramework.State;
 import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.Personage;
-import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 
-public class Jardin implements AdversarySearchState{
+public class Jardin implements State{
 	
 	private int w;
 	private int h;
-	private Personage[][] mapa;
+	protected Personage[][] mapa;
 	private int energiaZombie;
 	private int energiaJugador;
 	private boolean turno = false; //false zombie true jugador
@@ -73,9 +72,29 @@ public class Jardin implements AdversarySearchState{
 		return h;
 	}
 
+	public boolean endGame() {
+		boolean res = false;
+		boolean empty = true;
+		
+		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
+			res |= mapa[i][0] instanceof Zombie;
+		}
+		if(res)
+			return res;
+		
+		for (int i = 0; i < mapa.length && empty; i++) { //si quedan zombies en el mapa
+			for (int j = 0; j < mapa[0].length && empty ; j++) {
+				empty &= !(mapa[i][j] instanceof Zombie);
+			}
+		}
+		
+		res = (getEnergiaZombie() < new ZombieLento(5).getCosto()) && empty; 
+		return res;
+	}
+	
 
 	public void avanzar() {
-		if(!isMax()){
+		if(!endGame()){
 			for (int i = 0; i < h; i++) {
 				for (int j = 0; j < w-1; j++) {
 					if (turno) {
@@ -131,69 +150,10 @@ public class Jardin implements AdversarySearchState{
     	return res;
     }
   
-	/** 
-	 * Returns a representation as a string of the current state. This method
-	 * must be implemented by all concrete classes implementing State.
-	 * @return a string representing the current state.
-	 * @pre. true.
-	 * @post. A text representation of the current state is returned.
-	 */	
-	public String toString(){
-		String res = "";
-		for (int i = 0; i< mapa.length;i++ ) {
-			res += "|";	
-			for (int k = 0; k< mapa.length;k++ ) {
-				if (mapa[i][k] == null) {
-					res += "NN"+"|";
-				}else{
-					res +=  mapa[i][k].toString()+"|";
-				}
-			}
-			res += "\n";
-		}
-		return res;
-	}
 
-	public boolean isMax() {
-		boolean res = false;
-		boolean empty = true;
-		
-		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
-			res |= mapa[i][0] instanceof Zombie;
-		}
-		if(res)
-			return res;
-		
-		for (int i = 0; i < mapa.length && empty; i++) { //si quedan zombies en el mapa
-			for (int j = 0; j < mapa[0].length && empty ; j++) {
-				empty &= !(mapa[i][j] instanceof Zombie);
-			}
-		}
-		
-		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty; 
-		return res;
-	}
 	
 	public void place(int i, int j, Personage x) {
 		mapa[i][j] = x;
-	}
-	
-	public Jardin ruleApplied() {
-		return null;
-	}
-
-	public boolean equals(AdversarySearchState other) {
-		if(other == null) return false;
-    	boolean res = false;
-    	if(other instanceof Jardin) {
-    		Object[][] otherMap = ((Jardin) other).getMapa();
-        	for (int i = 0; i < w && res; i++) {
-    			for (int j = 0; j < h && res; j++) {
-    				res = otherMap[w][h].equals(this.mapa[w][h]);
-    			}
-    		}
-    	}
-    	return res;
 	}
 	
 	protected Jardin clone(){
