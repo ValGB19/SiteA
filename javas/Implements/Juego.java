@@ -1,6 +1,15 @@
 package javas.Implements;
 
 import java.util.ArrayList;
+/**
+ * Title:       Juego<p>
+ * Description: Clase utilizada para que la eleccion de donde poner un zombie sea la mejor<p>
+ * <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
 import java.util.List;
 
 import javas.Interfaces.AdversaryFramework.AdversarySearchEngine;
@@ -13,7 +22,18 @@ int cota=0;//usa en el metodo comp sucesor
 		super(problem, maxDepth);
 	}
 
-
+	/** 
+	 * Starts the search in order to compute a value for a state. The
+	 * computation is performed by exploring the game tree corresponding
+	 * to the problem being analysed, considering state as the root,
+	 * and with maximum depth maxDepth.
+	 * @param state is the state for which its value is being computed.
+	 * @return the value computed for the state.
+	 * @pre. problem!=null and state!=null.
+	 * @post. the value for the state is computed, via a search in the
+	 * game tree for state as the root, and maxDepth as the maximum 
+	 * depth. 
+	 */
 	public int computeValue(JardinExt state) {
 		if (state.isMax() || maxDepth == 0) {
 			return problem.value(state);
@@ -23,12 +43,25 @@ int cota=0;//usa en el metodo comp sucesor
 		for (JardinExt j :problem.getSuccessors(state)) {
 			res = (state.getTurno()) ? Math.min(aux.computeValue(j), res) : Math.max(aux.computeValue(j), res);
 		}
-		
 		return 0;
 	}
 
-
-	public JardinExt computeSuccessor(JardinExt state) {//El método ruleApplied () en el resultado indica qué regla condujo al estado. 
+	/** 
+	 * Starts the search in order to compute a most promising successor
+	 * for a state. The computation is performed by exploring the game 
+	 * tree corresponding to the problem being analysed, considering 
+	 * state as the root, and with maximum depth maxDepth.
+	 * @param state is the state for which its most promising successor
+	 * is being computed.
+	 * @return the most promising successor for state. The method
+	 * ruleApplied() in the result indicates which rule led to the 
+	 * state. 
+	 * @pre. problem!=null and state!=null.
+	 * @post. the most promising successor for the state is computed, 
+	 * via a search in the game tree for state as the root, and 
+	 * maxDepth as the maximum depth. 
+	 */
+	public JardinExt computeSuccessor(JardinExt state) {
 			List<JardinExt> nuevo = new ArrayList<JardinExt>();
 			nuevo = problem.getSuccessors(state);
 			JardinExt mejor = null, masMejor = null;
@@ -46,6 +79,20 @@ int cota=0;//usa en el metodo comp sucesor
 			return masMejor;
 	}
 	
+	/** 
+	 * Metodo para recorrer el arbol de estados, generados a partir de 
+	 * uno en particular y retorna la valoracion del mejor estado siguiente (aproximado)
+	 * @param raiz es el estado actual del que se quiere obtener el siguiente
+	 * @param profundida es el numero de niveles maximo del arbol de estados a generar
+	 * @param alfa es el maxi
+	 * @return the most promising successor for state. The method
+	 * ruleApplied() in the result indicates which rule led to the 
+	 * state. 
+	 * @pre. problem!=null and state!=null.
+	 * @post. the most promising successor for the state is computed, 
+	 * via a search in the game tree for state as the root, and 
+	 * maxDepth as the maximum depth. 
+	 */
 	public int minMaxAB(JardinExt raiz, int profundidad, int alfa, int beta){
 		if(raiz.isMax() || profundidad <= 0 ){
 			return problem.value(raiz);
@@ -66,14 +113,6 @@ int cota=0;//usa en el metodo comp sucesor
 		}
 	}
 	
-	/*Funcion minMaxAB(n, alfa, beta) --> Valor!  
-	 *   Si n es hoja o esta a nivel maximo!    
-	 *       retornar valor(n)!
-	 *           Sino!
-	 *         Para cada hijo n_k de n y mientras alfa<beta hacer! 
-	 *                    Si n es Max!                alfa:= max(alfa, minMaxAB(n_k, alfa, beta))!            Sino!                beta:= min(beta, minMaxAB(n_k, alfa, beta))!            Fsi  !        Fpara!        Si n es Max!            retornar alfa!        Sino!            retornar beta!        Fsi!    Fsi ! Ffuncion
-*/
-
 	public void report() {
 		
 	}

@@ -8,7 +8,7 @@ package javas.Interfaces;
  * <p>
  * Copyright:   None <p>
  * Company:     None<p>
- * @author Grupo:  Dalessandro Garcia, Saenz.
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
  * @version 0.1
  */
 
