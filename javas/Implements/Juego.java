@@ -10,6 +10,14 @@ public class Juego extends AdversarySearchEngine<Problema,Jardin>{
 int cota=0;//usa en el metodo comp sucesor
 	
 	public int computeValue(Jardin state) {
+		if (state.isMax() || maxDepth == 0) {
+			return problem.value(state);
+		}
+		Integer res = problem.maxValue();
+		for (Jardin j :problem.getSuccessors(state)) {
+			res = (state.getTurno()) ? Math.min(computeValue(j), res) : Math.min(computeValue(j), res);
+		}
+		
 		return 0;
 	}
 
