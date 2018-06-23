@@ -6,11 +6,12 @@ package javas.Implements;
 *************************************/
 
 import javas.Interfaces.AdversaryFramework.State;
+import javas.Interfaces.Planta;
 import javas.Interfaces.Zombie;
 import javas.Interfaces.Personage;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
 
-class Jardin implements AdversarySearchState{
+public class Jardin implements AdversarySearchState{
 	
 	private int w;
 	private int h;
@@ -40,10 +41,6 @@ class Jardin implements AdversarySearchState{
 	 * Setters and getters
 	 ******************************************/
 
-	public void avanzar() {
-		turno = !turno; 
-	}
-	
 	public boolean getTurno() {
 		return turno;
 	}
@@ -74,6 +71,42 @@ class Jardin implements AdversarySearchState{
 	
 	public int getSizeH() {
 		return h;
+	}
+
+
+	public void avanzar() {
+		if(!isMax()){
+			for (int i = 0; i < h; i++) {
+				for (int j = 0; j < w-1; j++) {
+					if (turno) {
+						if(mapa[i][j] instanceof Planta) {
+							if (mapa[i][j] instanceof Girasol) {
+								if(((Girasol) mapa[i][j]).TopCapacSoles()==0){
+									energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+									((Girasol) mapa[i][j]).resetCapacSoles();
+								}
+								((Girasol) mapa[i][j]).setCapacSoles();
+								energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
+							}else if (mapa[i][j+1] instanceof Zombie) {
+								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
+							}
+						}
+					} else {
+						if(mapa[i][j] instanceof Zombie) {
+							if (mapa[i][j-1] instanceof Planta) {
+								mapa[i][j-1] = ((Planta) mapa[i][j-1]).recibeDano(mapa[i][j].getDano()); 
+							}else{
+								for (int j2 = 0; j2 < ((Zombie) mapa[i][j]).getVel() && mapa[i][j-1] == null && j > 0; j2++) {
+									mapa[i][j-1] = mapa[i][j];
+									mapa[i][j] = null;
+								}
+							}
+						}
+					}
+				}
+			}
+			turno = !turno;
+		}
 	}
 
 	/** 
@@ -122,23 +155,22 @@ class Jardin implements AdversarySearchState{
 	}
 
 	public boolean isMax() {
-		
-		
 		boolean res = false;
-		
 		boolean empty = true;
 		
-		for (int i = 0; i < mapa[0].length && !res; i++) {
+		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
 			res |= mapa[i][0] instanceof Zombie;
 		}
+		if(res)
+			return res;
 		
-		for (int i = 0; i < mapa.length && empty && !res; i++) {
-			for (int j = 0; j < mapa[0].length && empty && !res; j++) {
+		for (int i = 0; i < mapa.length && empty; i++) { //si quedan zombies en el mapa
+			for (int j = 0; j < mapa[0].length && empty ; j++) {
 				empty &= !(mapa[i][j] instanceof Zombie);
 			}
 		}
 		
-		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty;
+		res = (energiaZombie < new ZombieLento(5).getCosto()) && empty; 
 		return res;
 	}
 	
@@ -146,50 +178,8 @@ class Jardin implements AdversarySearchState{
 		mapa[i][j] = x;
 	}
 	
-	int i1 = 0;
-	int i2 = 0;
-	int ac = 0;
-	
-	public Object ruleApplied() {
-		Jardin res = this.clone();
-		res.avanzar();
-		if (i1 == h) {
-			return null;
-		}
-
-		if (turno) {
-			
-			switch (ac) {
-			case 0:
-				res.place(i1, i2, new Girasol());
-				ac++;
-				break;
-			case 1:
-				res.place(i1, i2, new Lanzaguisante());
-				ac++;
-				break;
-			default:
-				res.place(i1, i2, new Nuez());
-				ac = 0;
-				if(i2 == w-1) {
-					i2 = 0;
-					i1++;
-				}
-				break;
-			}
-			
-		}else{
-			i2 = w; 
-			if (res.getMapa()[i1][i2] == null) {
-				if (ac == 0)
-					res.place(i1,i2,new ZombieLento()); 
-				else 
-					res.place(i1,i2,new ZombieRapido());
-				ac = (ac == 1)? 0: 1;
-			}
-			i1++;
-		}
-		return res;
+	public Jardin ruleApplied() {
+		return null;
 	}
 
 	public boolean equals(AdversarySearchState other) {

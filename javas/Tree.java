@@ -1,4 +1,4 @@
-package java;
+package javas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,8 @@ public class Tree<E> {
   private List<Tree<E>> childs;
   private E info;
   
-  public Tree(){
+  @SuppressWarnings({ "unchecked", "rawtypes" })
+public Tree(){
 	  childs = new ArrayList();
   }
   

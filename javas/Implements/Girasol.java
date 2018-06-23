@@ -13,6 +13,14 @@ public class Girasol implements Planta{
 	
 //valu
 	
+	public Girasol(){
+		
+	}
+
+	public Girasol(int pena){
+		capacSoles += pena;
+	}
+	
 	public int getVida(){
 		return vida;
 	}
@@ -41,8 +49,8 @@ public class Girasol implements Planta{
 		return capacSoles;
 	}
 	
-	public void setCapacSoles(int n) {
-		capacSoles = n;
+	public void setCapacSoles() {
+		capacSoles -= 25;
 	}
 	
 	public void resetCapacSoles() {
@@ -57,8 +65,12 @@ public class Girasol implements Planta{
 		capacSoles=capacSoles-sol;
 	}
 	
-	public void recibeDano(int d){
-		vida = vida - d;
+	public Personage recibeDano(int d){
+		vida -= d;
+		if (vida > 0) {
+			return this;
+		}
+		return null;
 	}
 	
 	public boolean equals(Personage other) {

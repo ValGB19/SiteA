@@ -25,11 +25,15 @@ public class Lanzaguisante implements Planta{
 		return dano;
 	}
 	
-	public void recibeDano(int d){
-		vida = vida - d;
+	public Personage recibeDano(int d){
+		vida -= d;
+		if (vida > 0) {
+			return this;
+		}
+		return null;
 	}
 	
-	public boolean equals(Personage other) {
+	public boolean equals(Personage other){
 		if (other instanceof Lanzaguisante) {
 			return this.getVida() == other.getVida();
 		}
