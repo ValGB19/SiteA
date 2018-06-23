@@ -118,24 +118,26 @@ public class Problema implements AdversarySearchProblem<Jardin>{
 	}
 
 	public int value(Jardin state) {
-		int carril=0;
 		Personage[][] jar = state.getMapa();
-		for(int i = 0; i<5; i++) {
-			for(int j = 0; j<10; j++) {
-				if(jar[i][j] instanceof Zombie){
-					carril=carril+jar[i][j].getVida();
-				}else {
-					if(jar[i][j] instanceof Planta) {
-						if(jar[i][j] instanceof Girasol) {
-							carril=carril-(jar[i][j].getVida()/3);
-						}else {
-							carril=carril-jar[i][j].getVida();
-						}
+		int valor=0;
+		int p=0;
+		int z=0;
+		Personage bicho,zom;
+		for(int i=0;i<state.getSizeH();i++ ) {
+			for(int j=0;j<state.getSizeW();j++ ){
+				bicho=jar[i][j];
+				if(bicho instanceof Nuez || bicho instanceof Lanzaguisante) {
+					p++;
+					zom=jar[i][j+1];
+					if(zom instanceof Zombie){
+						valor=valor-((zom.getVida()-bicho.getDano())-(bicho.getVida()-zom.getDano()));
 					}
-				}
+				}else if(bicho instanceof Zombie)
+					z++;
 			}
 		}
-		return carril;
+		valor=valor+(p-z);
+		return valor;
 	}
 
 	public int minValue() {
