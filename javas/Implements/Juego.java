@@ -9,6 +9,7 @@ public class Juego extends AdversarySearchEngine<Problema,Jardin>{
 	}
 
 	public Jardin computeSuccessor(Jardin state) {
+		
 		return null;
 	}
 

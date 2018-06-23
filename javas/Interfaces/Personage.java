@@ -10,5 +10,7 @@ public interface Personage{
 	
 	abstract int getDano();
 	
+	abstract void recibeDano(int d);
+	
 	abstract boolean equals(Personage other);
 }
