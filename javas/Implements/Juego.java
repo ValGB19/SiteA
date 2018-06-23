@@ -1,10 +1,8 @@
 package javas.Implements;
 
-import java.util.ArrayList;
 /**
  * Title:       Juego<p>
  * Description: Clase utilizada para que la eleccion de donde poner un zombie sea la mejor<p>
- * <p>
  * Copyright:   None <p>
  * Company:     None<p>
  * @author Grupo:  Dalessandro, Garcia, Saenz.
@@ -16,12 +14,6 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchEngine;
 
 public class Juego extends AdversarySearchEngine<Problema,JardinExt>{
 	
-int cota=0;//usa en el metodo comp sucesor
-	
-	public Juego(Problema problem, int maxDepth) {
-		super(problem, maxDepth);
-	}
-
 	/** 
 	 * Starts the search in order to compute a value for a state. The
 	 * computation is performed by exploring the game tree corresponding
@@ -34,17 +26,10 @@ int cota=0;//usa en el metodo comp sucesor
 	 * game tree for state as the root, and maxDepth as the maximum 
 	 * depth. 
 	 */
-	public int computeValue(JardinExt state) {
-		if (state.isMax() || maxDepth == 0) {
-			return problem.value(state);
+	public int computeValue(JardinExt state) {	
+			return minMaxAB(state, maxDepth, problem.minValue(), problem.maxValue());
 		}
-		Integer res = (state.getTurno()) ? problem.maxValue() : problem.minValue();
-		Juego aux = new Juego(problem, maxDepth-1);
-		for (JardinExt j :problem.getSuccessors(state)) {
-			res = (state.getTurno()) ? Math.min(aux.computeValue(j), res) : Math.max(aux.computeValue(j), res);
-		}
-		return 0;
-	}
+
 
 	/** 
 	 * Starts the search in order to compute a most promising successor
@@ -61,22 +46,25 @@ int cota=0;//usa en el metodo comp sucesor
 	 * via a search in the game tree for state as the root, and 
 	 * maxDepth as the maximum depth. 
 	 */
-	public JardinExt computeSuccessor(JardinExt state) {
-			List<JardinExt> nuevo = new ArrayList<JardinExt>();
-			nuevo = problem.getSuccessors(state);
-			JardinExt mejor = null, masMejor = null;
-			if(cota <= getMaxDepth()){
-				for (JardinExt item : nuevo){
-					if((problem.value(state) <= problem.value(item))&& (state.getTurno() == true))
-						mejor = item;
-					
-					if((problem.value(state) > problem.value(item))&&(state.getTurno() == false))
-						mejor = state;
+	public JardinExt computeSuccessor(JardinExt state) {//El método ruleApplied () en el resultado indica qué regla condujo al estado.
+		JardinExt mejor = null;
+		int im = (state.getTurno()) ? problem.minValue(): problem.maxValue();
+		int r;
+		for (JardinExt item : problem.getSuccessors(state)){
+			r = computeValue(item);
+			if(state.getTurno()) {
+				if (r > im) {
+					mejor = item;
+					im = r;
 				}
-				cota++;
-				masMejor = computeSuccessor(mejor);
+			}else {
+				if (r < im) {
+					mejor = item;
+					im = r;
+				}
 			}
-			return masMejor;
+		}
+		return mejor;
 	}
 	
 	/** 
@@ -84,14 +72,11 @@ int cota=0;//usa en el metodo comp sucesor
 	 * uno en particular y retorna la valoracion del mejor estado siguiente (aproximado)
 	 * @param raiz es el estado actual del que se quiere obtener el siguiente
 	 * @param profundida es el numero de niveles maximo del arbol de estados a generar
-	 * @param alfa es el maxi
-	 * @return the most promising successor for state. The method
-	 * ruleApplied() in the result indicates which rule led to the 
-	 * state. 
-	 * @pre. problem!=null and state!=null.
-	 * @post. the most promising successor for the state is computed, 
-	 * via a search in the game tree for state as the root, and 
-	 * maxDepth as the maximum depth. 
+	 * @param alfa es el minimo valor actual
+	 * @param beta es el maximo valor actual
+	 * @return int con la valoracion del mejor estado siguiente (aproximado)
+	 * @pre. problem!=null
+	 * @post. retornar la valoracion del mejor estado siguiente
 	 */
 	public int minMaxAB(JardinExt raiz, int profundidad, int alfa, int beta){
 		if(raiz.isMax() || profundidad <= 0 ){
@@ -113,7 +98,15 @@ int cota=0;//usa en el metodo comp sucesor
 		}
 	}
 	
+	/** 
+	 * Reports information regarding a previously executed search.   
+	 * @pre. computeSuccessor(s) or computeValue(s) have been 
+	 * executed and finished.
+	 * @post. A report regarding the last performed search is printed 
+	 * to standard output.
+	 */
 	public void report() {
-		
+		System.out.println("Max depth: "+maxDepth);
+		System.out.println("isMax? "+problem.initialState().isMax());
 	}
 }

@@ -1,13 +1,17 @@
 package javas.Implements; 
 
-/*************************************
- * considerar la posibilidad de que jardin implemente Estado
- * una nueva clase implementara AdversarySearchState
-*************************************/
-
 import javas.Interfaces.AdversaryFramework.State;
 import javas.Implements.Personage.*;
 import javas.Interfaces.*;
+
+/**
+ * Title:       Jardin<p>
+ * Description: implementacion de la interface State <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
 
 public class Jardin implements State{
 	
@@ -27,6 +31,16 @@ public class Jardin implements State{
 		energiaZombie = 1500;
 	}
 	
+	/** 
+	 * Constructor de la clase Jardin
+	 * @param i es la cantidad de carriles del jardin
+	 * @param j es la cantidad de canteros por carril
+	 * @param p es la matriz para representar el jardin
+	 * @param eJ es la cantidad de energia con la que el jugador inicia una partida
+	 * @param ez es la can
+	 * @pre. true.
+	 * @post. inicializa w con el valor de i, h con el valor de j, mapa con la matriz p, energiaJugador con eJ y energiaZombie con ez
+	 */
 	public Jardin(int i, int k, Personage[][] p, int eJ, int ez){
 		w = i;
 		h = k;
@@ -71,6 +85,12 @@ public class Jardin implements State{
 		return h;
 	}
 
+	/** 
+	 * Determina si el estado representa el final de una partida
+	 * @pre. true.
+	 * @post. Retorna true si es un estado final
+	 * @return Retorna un boolean representando si es un estado de final de partida
+	 */
 	public boolean endGame() {
 		boolean res = false;
 		boolean empty = true;
@@ -91,7 +111,12 @@ public class Jardin implements State{
 		return res;
 	}
 	
-
+	/** 
+	 * 
+	 * @pre. true.
+	 * @post. 
+	 * @return Un integer
+	 */
 	public void avanzar() {
 		if(!endGame()){
 			for (int i = 0; i < h; i++) {
