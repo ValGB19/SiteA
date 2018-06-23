@@ -25,5 +25,7 @@ public interface Personage{
 	
 	abstract boolean equals(Personage other);
 	
+	abstract String toString();
+	
 	abstract Personage recibeDano(int d);
 }

@@ -32,6 +32,10 @@ public class Nuez implements Planta{
 		}
 		return null;
 	}
+	
+	public String toString() {
+		return "PN";
+	}
 
 	public boolean equals(Personage other) {
 		if (other instanceof Nuez) {
