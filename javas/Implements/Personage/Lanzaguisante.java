@@ -33,6 +33,10 @@ public class Lanzaguisante implements Planta{
 		return null;
 	}
 	
+	public String toString() {
+		return "PL";
+	}
+	
 	public boolean equals(Personage other){
 		if (other instanceof Lanzaguisante) {
 			return this.getVida() == other.getVida();

@@ -9,29 +9,6 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 		super(i, k, p, eJ, ez);
 	}
 
-	/** 
-	 * Returns a representation as a string of the current state. This method
-	 * must be implemented by all concrete classes implementing State.
-	 * @return a string representing the current state.
-	 * @pre. true.
-	 * @post. A text representation of the current state is returned.
-	 */	
-	public String toString(){
-		String res = "";
-		for (int i = 0; i< mapa.length;i++ ) {
-			res += "|";	
-			for (int k = 0; k< mapa.length;k++ ) {
-				if (mapa[i][k] == null) {
-					res += "NN"+"|";
-				}else{
-					res +=  mapa[i][k].toString()+"|";
-				}
-			}
-			res += "\n";
-		}
-		return res;
-	}
-
 	public boolean isMax() {
 		return endGame();
 	}

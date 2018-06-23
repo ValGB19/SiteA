@@ -77,6 +77,10 @@ public class Girasol implements Planta{
 		return null;
 	}
 	
+	public String toString() {
+		return "PG";
+	}
+	
 	public boolean equals(Personage other) {
 		if (other instanceof Girasol) {
 			return this.getVida() == other.getVida();

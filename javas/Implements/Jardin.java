@@ -31,6 +31,14 @@ public class Jardin implements State{
 		energiaZombie = 1500;
 	}
 	
+	public Jardin(){
+		w = 10;
+		h = 5;
+		mapa = new Personage[h][w];
+		energiaJugador = 100;
+		energiaZombie = 1500;
+	}
+	
 	/** 
 	 * Constructor de la clase Jardin
 	 * @param i es la cantidad de carriles del jardin
@@ -178,6 +186,29 @@ public class Jardin implements State{
 	
 	public void place(int i, int j, Personage x) {
 		mapa[i][j] = x;
+	}
+	
+	/** 
+	 * Returns a representation as a string of the current state. This method
+	 * must be implemented by all concrete classes implementing State.
+	 * @return a string representing the current state.
+	 * @pre. true.
+	 * @post. A text representation of the current state is returned.
+	 */	
+	public String toString(){
+		String res = "energia Jugador: "+energiaJugador+"\n"+"Energia Zombie: "+energiaZombie+"\n";
+		for (int i = 0; i< mapa.length;i++ ) {
+			res += "|";	
+			for (int k = 0; k< mapa[0].length;k++ ) {
+				if (mapa[i][k] == null) {
+					res += "NN"+"|";
+				}else{
+					res +=  mapa[i][k].toString()+"|";
+				}
+			}
+			res += "\n";
+		}
+		return res;
 	}
 	
 	protected Jardin clone(){
