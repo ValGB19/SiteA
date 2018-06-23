@@ -23,9 +23,7 @@ public interface Personage{
 	
 	abstract int getDano();
 	
-	abstract void recibeDano(int d);
-	
 	abstract boolean equals(Personage other);
 	
-	public Personage recibeDano(int d);
+	abstract Personage recibeDano(int d);
 }

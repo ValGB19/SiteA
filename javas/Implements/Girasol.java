@@ -21,6 +21,10 @@ public class Girasol implements Planta{
 		capacSoles += pena;
 	}
 	
+	/******************************************
+	 * Setters and getters
+	 ******************************************/
+	
 	public int getVida(){
 		return vida;
 	}

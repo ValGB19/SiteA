@@ -9,13 +9,19 @@ public class Juego extends AdversarySearchEngine<Problema,Jardin>{
 	
 int cota=0;//usa en el metodo comp sucesor
 	
+	public Juego(Problema problem, int maxDepth) {
+		super(problem, maxDepth);
+	}
+
+
 	public int computeValue(Jardin state) {
 		if (state.isMax() || maxDepth == 0) {
 			return problem.value(state);
 		}
-		Integer res = problem.maxValue();
+		Integer res = (state.getTurno()) ? problem.maxValue() : problem.minValue();
+		Juego aux = new Juego(problem, maxDepth-1);
 		for (Jardin j :problem.getSuccessors(state)) {
-			res = (state.getTurno()) ? Math.min(computeValue(j), res) : Math.min(computeValue(j), res);
+			res = (state.getTurno()) ? Math.min(aux.computeValue(j), res) : Math.max(aux.computeValue(j), res);
 		}
 		
 		return 0;
