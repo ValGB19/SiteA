@@ -40,7 +40,7 @@ public class minMax{
 					beta = Math.min(beta, minMaxAB(item, profundidad-1, alfa, beta, jugador));
 				}
 			}
-			if(raiz.isMax()){
+			if(jugador > 0){
 				return alfa;
 			}
 			else{

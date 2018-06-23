@@ -1,13 +1,13 @@
-package javas.Implements;
+package javas.Implements.Personage;
 
 import javas.Interfaces.Personage;
 import javas.Interfaces.Planta;
 
-public class Lanzaguisante implements Planta{
+public class Nuez implements Planta{
 	
-	private final int dano = 20;
-	private final int costo = 100;
-	private int vida = 60;
+	private final int dano = 10;
+	private final int costo = 75;
+	private int vida = 120;
 	
 	public int getVida(){
 		return vida;
@@ -32,9 +32,9 @@ public class Lanzaguisante implements Planta{
 		}
 		return null;
 	}
-	
-	public boolean equals(Personage other){
-		if (other instanceof Lanzaguisante) {
+
+	public boolean equals(Personage other) {
+		if (other instanceof Nuez) {
 			return this.getVida() == other.getVida();
 		}
 		return false;

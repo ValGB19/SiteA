@@ -6,9 +6,8 @@ package javas.Implements;
 *************************************/
 
 import javas.Interfaces.AdversaryFramework.State;
-import javas.Interfaces.Planta;
-import javas.Interfaces.Zombie;
-import javas.Interfaces.Personage;
+import javas.Implements.Personage.*;
+import javas.Interfaces.*;
 
 public class Jardin implements State{
 	

@@ -1,4 +1,4 @@
-package javas.Implements;
+package javas.Implements.Personage;
 
 import javas.Interfaces.Personage;
 import javas.Interfaces.Zombie;

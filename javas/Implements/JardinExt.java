@@ -2,9 +2,8 @@ package javas.Implements;
 
 import javas.Interfaces.Personage;
 import javas.Interfaces.AdversaryFramework.AdversarySearchState;
-import javas.Interfaces.AdversaryFramework.State;
 
-public class JardinExt  extends Jardin implements AdversarySearchState{
+public class JardinExt extends Jardin implements AdversarySearchState{
 	
 	public JardinExt(int i, int k, Personage[][] p, int eJ, int ez) {
 		super(i, k, p, eJ, ez);
@@ -55,9 +54,7 @@ public class JardinExt  extends Jardin implements AdversarySearchState{
     	return res;
 	}
 
-	@Override
-	public boolean equals(State other) {
-		// TODO Auto-generated method stub
-		return false;
+	protected JardinExt clone(){
+		return new JardinExt(getSizeW(),getSizeH(),mapa,getEnergiaJugador(),getEnergiaZombie());
 	}
 }

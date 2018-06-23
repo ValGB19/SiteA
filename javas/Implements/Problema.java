@@ -1,36 +1,35 @@
 package javas.Implements;
 
-import javas.Interfaces.Personage;
-import javas.Interfaces.Planta;
-import javas.Interfaces.Zombie;
+import javas.Interfaces.*;
+import javas.Implements.Personage.*;
 import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Problema implements AdversarySearchProblem<Jardin>{
+public class Problema implements AdversarySearchProblem<JardinExt>{
 	
-	Jardin inicial;
+	JardinExt inicial;
 	
 	@SuppressWarnings("unused")
 	private Problema() { //declarado asi para que no puedan crear un problema sin estado inicial
 		inicial = null;
 	}
 	
-	public Problema(Jardin j) {
+	public Problema(JardinExt j) {
 		inicial = j;
 	}
 	
 	
-	public Jardin initialState() {
+	public JardinExt initialState() {
 		return inicial;
 	}
 	
 	//@pre state is not a maxState
 	//i, j posiciones donde genera
-	private List<Jardin> generaTurnoJugador(int i, int j, Jardin state){
-		ArrayList<Jardin> res = new ArrayList<Jardin>();
-		Jardin aux = state;
+	private List<JardinExt> generaTurnoJugador(int i, int j, JardinExt state){
+		ArrayList<JardinExt> res = new ArrayList<JardinExt>();
+		JardinExt aux = state;
 		if(state.getMapa()[i][j]==null) {
 			if(state.getEnergiaJugador()>=50) {
 				aux = state.clone();
@@ -67,9 +66,9 @@ public class Problema implements AdversarySearchProblem<Jardin>{
 	}
 		
 	//i fila donde genera
-	private List<Jardin> generaTurnoZombie(int i, Jardin state){
-		ArrayList<Jardin> res = new ArrayList<Jardin>();
-		Jardin aux = state;
+	private List<JardinExt> generaTurnoZombie(int i, JardinExt state){
+		ArrayList<JardinExt> res = new ArrayList<JardinExt>();
+		JardinExt aux = state;
 		if(state.getMapa()[i][state.getSizeW()-1]==null) {
 			if(state.getEnergiaZombie()>=75) {
 				aux = state.clone();
@@ -89,14 +88,14 @@ public class Problema implements AdversarySearchProblem<Jardin>{
 		return res;
 	}
 
-	public List<Jardin> getSuccessors(Jardin state){
+	public List<JardinExt> getSuccessors(JardinExt state){
 		if (state.isMax())
-			return new ArrayList<Jardin>();
+			return new ArrayList<JardinExt>();
 		else{
-			List<Jardin> suc = new ArrayList<Jardin>();
+			List<JardinExt> suc = new ArrayList<JardinExt>();
 			if(state.getTurno())
 				if(state.getEnergiaJugador() < Math.min(Math.min(new Nuez().getCosto(), new Girasol().getCosto()), new Lanzaguisante().getCosto())){
-					Jardin aux = state.clone();
+					JardinExt aux = state.clone();
 					aux.avanzar();
 					suc.add(aux);
 				}else{
@@ -111,13 +110,13 @@ public class Problema implements AdversarySearchProblem<Jardin>{
 		}
 	}
 	
-	public boolean end(Jardin state){
+	public boolean end(JardinExt state){
 		if(getSuccessors(state).size()==0)
 			return true;
 		return false;
 	}
 
-	public int value(Jardin state) {
+	public int value(JardinExt state) {
 		Personage[][] jar = state.getMapa();
 		int valor=0;
 		int p=0;
