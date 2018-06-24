@@ -20,12 +20,20 @@ public class Girasol implements Planta{
 	private int sol = 25;
 	private int capacSoles = 50;
 	
+	private final int capMax = 50;
+	private int almacen = 0;
+	
 	public Girasol(){
 	}
-
-	public Girasol(int pena){
-		capacSoles += pena;
+	
+	public Girasol(int e, int q) {
+		vida = e;
+		almacen = q;
 	}
+	
+	/*public Girasol(int pena){
+		capacSoles += pena;
+	}*/
 	
 	/******************************************
 	 * Setters and getters
@@ -119,6 +127,16 @@ public class Girasol implements Planta{
 		return null;
 	}
 	
+	public int energia() {
+		almacen +=sol;
+		if (almacen >= capMax) {
+			almacen = 0;
+			return capMax;
+		}
+		
+		return 0;
+	}
+	
 	public String toString() {
 		return "PG";
 	}
@@ -129,4 +147,8 @@ public class Girasol implements Planta{
 		}
 		return false;
 	}
+	
+	public Girasol clone() {
+		return new Girasol(vida, almacen);
+	} 
 }

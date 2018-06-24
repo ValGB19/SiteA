@@ -73,6 +73,10 @@ public class Jardin implements State{
 		energiaZombie = e;
 	}
 	
+	public void changeTurno() {
+		turno = !turno;
+	}
+	
 	public void setEnergiaJugador(int e){
 		energiaJugador = e;
 	}
@@ -114,8 +118,7 @@ public class Jardin implements State{
 				empty &= !(mapa[i][j] instanceof Zombie);
 			}
 		}
-		
-		res = (getEnergiaZombie() < new ZombieLento(5).getCosto()) && empty; 
+		res = (getEnergiaZombie() < new ZombieLento().getCosto()) && empty; 
 		return res;
 	}
 	
@@ -128,29 +131,26 @@ public class Jardin implements State{
 	 */
 	public void avanzar() {
 		if(!endGame()){
-			for (int i = 0; i < h; i++) {
-				for (int j = 0; j < w-1; j++) {
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 10; j++) {
 					if (turno) {
 						if(mapa[i][j] instanceof Planta) {
 							if (mapa[i][j] instanceof Girasol) {
-								if(((Girasol) mapa[i][j]).TopCapacSoles()==0){
-									energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
-									((Girasol) mapa[i][j]).resetCapacSoles();
-								}
-								((Girasol) mapa[i][j]).setCapacSoles();
-								energiaJugador += ((Girasol) mapa[i][j]).TopCapacSoles();
-							}else if (mapa[i][j+1] instanceof Zombie) {
+								energiaJugador += ((Girasol) mapa[i][j]).energia();
+							}else if (j < 9 && mapa[i][j+1] instanceof Zombie) {
 								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
 							}
 						}
 					} else {
-						if(mapa[i][j] instanceof Zombie) {
+						if(j > 0 && mapa[i][j] instanceof Zombie) {
 							if (mapa[i][j-1] instanceof Planta) {
 								mapa[i][j-1] = ((Planta) mapa[i][j-1]).recibeDano(mapa[i][j].getDano()); 
 							}else{
-								for (int j2 = 0; j2 < ((Zombie) mapa[i][j]).getVel() && mapa[i][j-1] == null && j > 0; j2++) {
-									mapa[i][j-1] = mapa[i][j];
-									mapa[i][j] = null;
+								mapa[i][j-1] = mapa[i][j];
+								mapa[i][j] = null;
+								if (mapa[i][j-1] instanceof ZombieRapido && 0 < j-1 && mapa[i][j-2] == null) {
+									mapa[i][j-2] = mapa[i][j-1];
+									mapa[i][j-1] = null;
 								}
 							}
 						}
@@ -183,6 +183,27 @@ public class Jardin implements State{
     	return res;
     }
   
+    public Personage[][] copyMap(){
+		Personage[][] res = new Personage[5][10];
+		for (int i = 0; i < res.length; i++) {
+			for (int j = 0; j < res[0].length; j++) {
+				if (mapa[i][j] != null) {
+					if (mapa[i][j] instanceof Girasol) 
+						res[i][j] = ((Girasol) mapa[i][j]).clone();
+					if (mapa[i][j] instanceof Nuez) 
+						res[i][j] = ((Nuez) mapa[i][j]).clone();
+					if (mapa[i][j] instanceof Lanzaguisante) 
+						res[i][j] = ((Lanzaguisante) mapa[i][j]).clone();
+					if (mapa[i][j] instanceof ZombieLento) 
+						res[i][j] = ((ZombieLento) mapa[i][j]).clone();
+					if (mapa[i][j] instanceof ZombieRapido) 
+						res[i][j] = ((ZombieRapido) mapa[i][j]).clone();
+				}
+			}
+		}
+		return res;
+	}
+    
 
     /** 
 	 * Ubica una planta o zombie en la matriz en la posicion [i][j]

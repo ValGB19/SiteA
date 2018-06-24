@@ -18,6 +18,14 @@ public class Lanzaguisante implements Planta{
 	private final int costo = 100;
 	private int vida = 60;
 	
+	public Lanzaguisante(int n) {
+		vida=n;
+	}
+	
+	public Lanzaguisante() {
+
+	}
+
 	/******************************************
 	 * Setters and getters
 	 ******************************************/
@@ -63,4 +71,8 @@ public class Lanzaguisante implements Planta{
 		}
 		return false;
 	}
+	
+	public Lanzaguisante clone() {
+		return new Lanzaguisante(vida);
+	} 
 }

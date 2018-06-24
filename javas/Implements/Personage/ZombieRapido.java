@@ -67,7 +67,7 @@ public class ZombieRapido implements Zombie{
 	}
 	
 	public String toString(){
-		return "ZZ";
+		return "ZR";
 	}
 	
 	public boolean equals(Personage other) {

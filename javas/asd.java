@@ -10,9 +10,11 @@ public class asd{
 		System.out.println("******************");
 		JardinExt je = new JardinExt(jardin);
 	    Problema p = new Problema(je);
-	    Juego j = new Juego(0,p);
-	    p.getSuccessors(je);
-	   // System.out.println(p.getSuccessors(je).get(3));
+	    je.avanzar();
+	    for(JardinExt x:p.getSuccessors(je)) {
+	    	System.out.println(x);
+	    }
+	    System.out.println(p.getSuccessors(je).size());
 	    System.out.println(new ZombieLento().getClass());
 	}
 }

@@ -22,6 +22,9 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	
 	public JardinExt(Jardin p) {
 		padre = p;
+		mapa = p.getMapa();
+		energiaZombie = p.getEnergiaZombie();
+		energiaJugador = p.getEnergiaJugador();
 	}
 	
 	public void setPadre(Jardin p){

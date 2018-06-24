@@ -21,7 +21,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 	JardinExt inicial;
 	
 	@SuppressWarnings("unused")
-	private Problema() { //declarado asi para que no puedan crear un problema sin estado inicial
+	private Problema() { 
 		inicial = null;
 	}
 	
@@ -55,31 +55,35 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		JardinExt aux = state;
 		if(state.getMapa()[i][j]==null) {
 			if(state.getEnergiaJugador()>=50) {
-				aux = state.clone();
-				aux.setEnergiaJugador(state.getEnergiaJugador()-50);
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
+				aux.setEnergiaJugador(state.getEnergiaJugador() - 50);
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Girasol());
 				aux.avanzar();
 				res.add(aux);
 			}
 			if(state.getEnergiaJugador()>=75) {
-				aux = state.clone();
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Nuez());
-				aux.setEnergiaJugador(state.getEnergiaJugador()-75);
+				aux.setEnergiaJugador(state.getEnergiaJugador() - 75);
 				aux.avanzar();
 				res.add(aux);
 			}
 			if(state.getEnergiaJugador()>=100) {
-				aux = state.clone();
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
 				aux.setPadre(this.inicial);
-				aux.setEnergiaJugador(state.getEnergiaJugador()-100);
+				aux.setEnergiaJugador(state.getEnergiaJugador() - 100);
 				aux.place(i, j, new Lanzaguisante());
 				aux.avanzar();
 				res.add(aux);
 			}
 			if (state.getEnergiaJugador()<50) {
-				aux = state.clone();
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
 				aux.setPadre(this.inicial);
 				aux.avanzar();
 				res.add(aux);
@@ -100,31 +104,28 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 	 */
 	private List<JardinExt> generaTurnoZombie(int i, JardinExt state){
 		ArrayList<JardinExt> res = new ArrayList<JardinExt>();
-		
-		JardinExt aux2;
-		if(state.getMapa()[i][state.getSizeW()-1]==null) {
+		JardinExt aux = state;
+		if(state.getMapa()[i][9]==null) {
 			if(state.getEnergiaZombie()>=75) {
-				JardinExt aux;
-				aux = state.clone();
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
 				aux.setPadre(this.inicial);
-				aux.place(i, state.getSizeW()-1, new ZombieLento());
-				aux.setEnergiaZombie(aux.getEnergiaZombie()-75);
+				aux.setEnergiaZombie(state.getEnergiaZombie() - 75);
+				aux.place(i, 9, new ZombieLento());
 				aux.avanzar();
 				res.add(aux);
 			}
 			if(state.getEnergiaZombie()>=100) {
-				aux2 = state.clone();
-				aux2.setPadre(this.inicial);
-				aux2.place(i, state.getSizeW()-1, new ZombieRapido());
-				aux2.setEnergiaZombie(aux2.getEnergiaZombie()-100);
-				aux2.avanzar();
-				res.add(aux2);
+				aux = new JardinExt();
+				aux.setMapa(state.copyMap());
+				aux.setEnergiaZombie(state.getEnergiaZombie() - 100);
+				aux.setPadre(this.inicial);
+				aux.place(i, 9, new ZombieRapido());
+				aux.avanzar();
+				res.add(aux);
 			}
 		}
-		for (JardinExt jardinExt : res) {
-			System.out.println(jardinExt);
-			System.out.println(123123);
-		}
+		
 		return res;
 	}
 
@@ -195,7 +196,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		int z=0;
 		Personage bicho,zom;
 		for(int i=0;i<state.getSizeH();i++ ) {
-			for(int j=0;j<state.getSizeW();j++ ){
+			for(int j=0;j<state.getSizeW()-1;j++ ){
 				bicho=jar[i][j];
 				if(bicho instanceof Nuez || bicho instanceof Lanzaguisante) {
 					p++;
