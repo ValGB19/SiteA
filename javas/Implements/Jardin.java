@@ -18,8 +18,8 @@ public class Jardin implements State{
 	private int w;
 	private int h;
 	protected Personage[][] mapa;
-	private int energiaZombie;
-	private int energiaJugador;
+	protected int energiaZombie;
+	protected int energiaJugador;
 	private boolean turno = false; //false zombie true jugador
 	
 
@@ -41,17 +41,13 @@ public class Jardin implements State{
 	
 	/** 
 	 * Constructor de la clase Jardin
-	 * @param i es la cantidad de carriles del jardin
-	 * @param j es la cantidad de canteros por carril
 	 * @param p es la matriz para representar el jardin
 	 * @param eJ es la cantidad de energia con la que el jugador inicia una partida
 	 * @param ez es la can
 	 * @pre. true.
-	 * @post. inicializa w con el valor de i, h con el valor de j, mapa con la matriz p, energiaJugador con eJ y energiaZombie con ez
+	 * @post. inicializa el mapa con la matriz p, energiaJugador con eJ y energiaZombie con ez
 	 */
-	public Jardin(int i, int k, Personage[][] p, int eJ, int ez){
-		w = i;
-		h = k;
+	public Jardin(Personage[][] p, int eJ, int ez){
 		mapa = p;
 		energiaJugador = eJ;
 		energiaZombie = ez;
@@ -85,6 +81,10 @@ public class Jardin implements State{
 		return mapa;
 	}
 	
+	public void setMapa(Personage[][] j) {
+		mapa = j;
+	}
+	
 	public int getSizeW() {
 		return w;
 	}
@@ -103,7 +103,7 @@ public class Jardin implements State{
 		boolean res = false;
 		boolean empty = true;
 		
-		for (int i = 0; i < mapa[0].length && !res; i++) { //algun zombie al final
+		for (int i = 0; i < mapa.length && !res; i++) { //algun zombie al final
 			res |= mapa[i][0] instanceof Zombie;
 		}
 		if(res)
@@ -220,6 +220,6 @@ public class Jardin implements State{
 	}
 	
 	protected Jardin clone(){
-		return new Jardin(w,h,mapa,energiaJugador,energiaZombie);
+		return new Jardin(mapa.clone(),energiaJugador,energiaZombie);
 	}
 }

@@ -18,6 +18,13 @@ public class Nuez implements Planta{
 	private final int costo = 75;
 	private int vida = 120;
 	
+	public Nuez(int vida2) {
+		vida = vida2;
+	}
+
+	public Nuez() {
+	}
+
 	/******************************************
 	 * Setters and getters
 	 ******************************************/
@@ -62,5 +69,9 @@ public class Nuez implements Planta{
 			return this.getVida() == other.getVida();
 		}
 		return false;
+	}
+	
+	public Nuez clone(){
+		return new Nuez(vida);
 	}
 }

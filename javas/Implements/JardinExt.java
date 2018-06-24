@@ -33,8 +33,11 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	 * @pre. true.
 	 * @post. true
 	 */
-	private JardinExt(int i, int k, Personage[][] p, int eJ, int ez) {
-		super(i, k, p, eJ, ez);
+	private JardinExt(Personage[][] ma, int ej, int ez) {
+		mapa = ma;
+		energiaJugador = ej;
+		energiaZombie = ez;
+		padre = null;
 	}
 
 	/** 
@@ -77,6 +80,6 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	}
 
 	protected JardinExt clone(){
-		return new JardinExt(getSizeW(),getSizeH(),mapa,getEnergiaJugador(),getEnergiaZombie());
+		return new JardinExt(mapa.clone(),getEnergiaJugador(),getEnergiaZombie());
 	}
 }

@@ -66,7 +66,7 @@ public class ZombieLento implements Zombie{
 	}
 	
 	public String toString(){
-		return "ZR";
+		return "ZL";
 	}
 	
 	public boolean equals(Personage other) {
@@ -74,5 +74,9 @@ public class ZombieLento implements Zombie{
 			return this.getVida() == other.getVida();
 		}
 		return false;
+	}
+	
+	public ZombieLento clone(){
+		return new ZombieLento(vida);
 	}
 }

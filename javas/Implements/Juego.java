@@ -15,6 +15,16 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchEngine;
 
 public class Juego extends AdversarySearchEngine<Problema,JardinExt>{
 	
+	public Juego(Problema p) {
+		super(p);
+	}
+
+
+	public Juego(int i, Problema p) {
+		super(p,i);
+	}
+
+
 	/** 
 	 * Starts the search in order to compute a value for a state. The
 	 * computation is performed by exploring the game tree corresponding
@@ -47,7 +57,7 @@ public class Juego extends AdversarySearchEngine<Problema,JardinExt>{
 	 * via a search in the game tree for state as the root, and 
 	 * maxDepth as the maximum depth. 
 	 */
-	public JardinExt computeSuccessor(JardinExt state) {//El método ruleApplied () en el resultado indica qué regla condujo al estado.
+	public JardinExt computeSuccessor(JardinExt state) {
 		JardinExt mejor = null;
 		int im = (state.getTurno()) ? problem.minValue(): problem.maxValue();
 		int r;

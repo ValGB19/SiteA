@@ -67,7 +67,7 @@ public class ZombieRapido implements Zombie{
 	}
 	
 	public String toString(){
-		return "ZR";
+		return "ZZ";
 	}
 	
 	public boolean equals(Personage other) {
@@ -75,5 +75,9 @@ public class ZombieRapido implements Zombie{
 			return this.getVida() == other.getVida();
 		}
 		return false;
+	}
+	
+	public ZombieRapido clone(){
+		return new ZombieRapido(vida);
 	}
 }
