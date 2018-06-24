@@ -3,11 +3,24 @@ package javas.Implements.Personage;
 import javas.Interfaces.Personage;
 import javas.Interfaces.Planta;
 
+/**
+ * Title:       Nuez<p>
+ * Description: implementacion de la interface Planta <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
+
 public class Nuez implements Planta{
 	
 	private final int dano = 10;
 	private final int costo = 75;
 	private int vida = 120;
+	
+	/******************************************
+	 * Setters and getters
+	 ******************************************/
 	
 	public int getVida(){
 		return vida;

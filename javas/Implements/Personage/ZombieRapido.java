@@ -3,11 +3,21 @@ package javas.Implements.Personage;
 import javas.Interfaces.Personage;
 import javas.Interfaces.Zombie;
 
+/**
+ * Title:       ZombieRapido<p>
+ * Description: implementacion de la interface Zombie <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
+
+
 public class ZombieRapido implements Zombie{
 	
 	private int vida=60;
 	private static final int dano = 30;
-	private static final int costo = 100; // ver consigna
+	private static final int costo = 100;
 	private static final int vel = 2;
 	
 	public ZombieRapido(){
@@ -17,6 +27,10 @@ public class ZombieRapido implements Zombie{
 		vida = vi;
 	}
 
+	/******************************************
+	 * Setters and getters
+	 ******************************************/
+	
 	public int getVida() {
 		return vida;
 	}

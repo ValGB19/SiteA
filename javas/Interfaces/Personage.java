@@ -26,6 +26,12 @@ public interface Personage{
 	abstract boolean equals(Personage other);
 	
 	abstract String toString();
-	
+	/** 
+	 * Representa la accion de cuando el Personage recibe dano de parte de otro
+	 * @pre. true.
+	 * @post. Retorna el mismo Personage con menos vida en caso que la vida > 0
+	 * luego de descontar el dano, de lo contrario retorna null.
+	 * @return Retorna el mismo Personage o null respectivamente.
+	 */
 	abstract Personage recibeDano(int d);
 }

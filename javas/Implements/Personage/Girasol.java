@@ -3,6 +3,15 @@ package javas.Implements.Personage;
 import javas.Interfaces.Personage;
 import javas.Interfaces.Planta;
 
+/**
+ * Title:      	Girasol<p>
+ * Description: implementacion de la interface Planta <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
+
 public class Girasol implements Planta{
 	
 	private final int dano = 0;
@@ -11,10 +20,7 @@ public class Girasol implements Planta{
 	private int sol = 25;
 	private int capacSoles = 50;
 	
-//valu
-	
 	public Girasol(){
-		
 	}
 
 	public Girasol(int pena){

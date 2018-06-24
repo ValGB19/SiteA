@@ -3,6 +3,16 @@ package javas.Implements.Personage;
 import javas.Interfaces.Personage;
 import javas.Interfaces.Zombie;
 
+/**
+ * Title:       ZombieLento<p>
+ * Description: implementacion de la interface Zombie <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
+
+
 public class ZombieLento implements Zombie{
 	
 	private int vida=100;
@@ -17,6 +27,9 @@ public class ZombieLento implements Zombie{
 		vida = vi;
 	}
 
+	/******************************************
+	 * Setters and getters
+	 ******************************************/
 	public int getVida() {
 		return vida;
 	}
