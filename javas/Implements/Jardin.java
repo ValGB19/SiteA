@@ -120,10 +120,11 @@ public class Jardin implements State{
 	}
 	
 	/** 
-	 * 
+	 * Se encarga de avanzar un estado al siguiente moviendo los zombies o accionando 
+	 * a las plantas respectivamente del turno y cambia la variable turno al finalizar,
+	 * solo si no es un estado de final de partida<p>
 	 * @pre. true.
-	 * @post. 
-	 * @return Un integer
+	 * @post. ejecuta el turno del jugador o el maestro zombie segun corresponda
 	 */
 	public void avanzar() {
 		if(!endGame()){
@@ -183,7 +184,14 @@ public class Jardin implements State{
     }
   
 
-	
+    /** 
+	 * Ubica una planta o zombie en la matriz en la posicion [i][j]
+	 * @param i es el carril donde se ubicara el personaje
+	 * @param j es el cantero del carril donde se ubicara el personaje
+	 * @param x es el personaje a ubicar
+	 * @pre. true.
+	 * @post. ubica x en la posicion mapa[i][j] 
+	 */
 	public void place(int i, int j, Personage x) {
 		mapa[i][j] = x;
 	}
