@@ -1,5 +1,7 @@
 package javas.Implements;
 
+import java.util.List;
+
 /**
  * Title:       Juego<p>
  * Description: Clase utilizada para que la eleccion de donde poner un zombie sea la mejor<p>
@@ -8,7 +10,6 @@ package javas.Implements;
  * @author Grupo:  Dalessandro, Garcia, Saenz.
  * @version 0.1
  */
-import java.util.List;
 
 import javas.Interfaces.AdversaryFramework.AdversarySearchEngine;
 

@@ -7,6 +7,15 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchProblem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Title:       Problema<p>
+ * Description: Implementacion de la interface AdversarySearchProblem <p>
+ * Copyright:   None <p>
+ * Company:     None<p>
+ * @author Grupo:  Dalessandro, Garcia, Saenz.
+ * @version 0.1
+ */
+
 public class Problema implements AdversarySearchProblem<JardinExt>{
 	
 	JardinExt inicial;
@@ -48,14 +57,14 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			if(state.getEnergiaJugador()>=50) {
 				aux = state.clone();
 				aux.setEnergiaJugador(state.getEnergiaJugador()-50);
-				//aux.setPadre(this.inicial);
+				aux.setPadre(this.inicial);
 				aux.place(i, j, new Girasol());
 				aux.avanzar();
 				res.add(aux);
 			}
 			if(state.getEnergiaJugador()>=75) {
 				aux = state.clone();
-				//aux.setPadre(this.inicial);
+				aux.setPadre(this.inicial);
 				aux.place(i, j, new Nuez());
 				aux.setEnergiaJugador(state.getEnergiaJugador()-75);
 				aux.avanzar();
@@ -63,7 +72,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if(state.getEnergiaJugador()>=100) {
 				aux = state.clone();
-				//aux.setPadre(this.inicial);
+				aux.setPadre(this.inicial);
 				aux.setEnergiaJugador(state.getEnergiaJugador()-100);
 				aux.place(i, j, new Lanzaguisante());
 				aux.avanzar();
@@ -71,7 +80,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if (state.getEnergiaJugador()<50) {
 				aux = state.clone();
-				//aux.setPadre(this.inicial);
+				aux.setPadre(this.inicial);
 				aux.avanzar();
 				res.add(aux);
 			}
