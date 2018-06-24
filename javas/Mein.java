@@ -2,7 +2,6 @@ package javas;
 
 import javas.Implements.*;
 import javas.Implements.Personage.*;
-import javas.Interfaces.Personage;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
@@ -43,12 +42,12 @@ public class Mein{
 	}
 	
 	public static void jugar(){
-		Scanner planta = new Scanner(System.in);
 		int posicionX = 0;
 		int posicionY = 0;
 		boolean salir = false;
 	    int opcion; //Guardaremos la opcion del usuario
 	    Jardin posicion2 = new Jardin();
+	    Juego g = new Juego();
 	      
 	       while(!salir){
 	    	   System.out.println(posicion2);
@@ -59,7 +58,7 @@ public class Mein{
 	            
 	           try {
 		           System.out.println("la planta a usar");
-		           opcion = planta.nextInt();
+		           opcion = sn.nextInt();
 		            
 			       switch(opcion){
 		           case 1:
@@ -95,10 +94,11 @@ public class Mein{
 		           default:
 		               System.out.println("elija su opcion");
 		           }
+			       //Jardin = g.
 	           }
 	           catch (InputMismatchException e) {
 		           System.out.println("Debes insertar un número");
-		           planta.next();
+		           sn.next();
 	           }
 	       }
 	}	
