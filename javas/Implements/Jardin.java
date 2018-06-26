@@ -199,9 +199,10 @@ public class Jardin implements State{
 	 * @post. A text representation of the current state is returned.
 	 */	
 	public String toString(){
-		String res = "Energia Jugador: "+energiaJugador+"\n"+"Energia Zombie: "+energiaZombie+"\n";
+		String res = " | Energia Jugador: "+energiaJugador+"\n"+" | Energia Zombie: "+energiaZombie+"\n"+"\n"+"  -----------------------------"+"\n"+" | 0| 1| 2| 3| 4| 5| 6| 7| 8| 9|"+"\n";
+		System.out.println("  _____________________________"+"\n"+" |  Su turno!");
 		for (int i = 0; i< f;i++ ) {
-			res += "|";	
+			res += i+"|";	
 			for (int k = 0; k< c;k++ ) {
 				if (mapa[i][k] == null) {
 					res += "NN"+"|";
@@ -209,8 +210,9 @@ public class Jardin implements State{
 					res +=  mapa[i][k].toString()+"|";
 				}
 			}
-			res += "\n";
+			res += "\n" ;
 		}
+		res+= "  -----------------------------";
 		return res;
 	}
 	
