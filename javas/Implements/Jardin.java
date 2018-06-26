@@ -110,22 +110,10 @@ public class Jardin implements State{
 
 	public Personage[][] getMapa(){
 		Personage[][] res = new Personage[5][10];
-		for (int i = 0; i < res.length; i++) {
-			for (int j = 0; j < res[0].length; j++) {
-				if (mapa[i][j] != null) {
-					if (mapa[i][j] instanceof Girasol) 
-						res[i][j] = ((Girasol) mapa[i][j]).clone();
-					if (mapa[i][j] instanceof Nuez) 
-						res[i][j] = ((Nuez) mapa[i][j]).clone();
-					if (mapa[i][j] instanceof Lanzaguisante) 
-						res[i][j] = ((Lanzaguisante) mapa[i][j]).clone();
-					if (mapa[i][j] instanceof ZombieLento) 
-						res[i][j] = ((ZombieLento) mapa[i][j]).clone();
-					if (mapa[i][j] instanceof ZombieRapido) 
-						res[i][j] = ((ZombieRapido) mapa[i][j]).clone();
-				}
-			}
-		}
+		for (int i = 0; i < res.length; i++) 
+			for (int j = 0; j < res[0].length; j++) 
+				if (mapa[i][j] != null) 
+					res[i][j] = mapa[i][j].clone();
 		return res;
 	}
 	

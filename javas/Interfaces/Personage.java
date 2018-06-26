@@ -34,4 +34,6 @@ public interface Personage{
 	 * @return Retorna el mismo Personage o null respectivamente.
 	 */
 	abstract Personage recibeDano(int d);
+
+	abstract Personage clone();
 }
