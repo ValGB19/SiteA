@@ -56,7 +56,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		if(state.getMapa()[i][j]==null) {
 			if(state.getEnergiaJugador()>=50) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 50);
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Girasol());
@@ -65,7 +65,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if(state.getEnergiaJugador()>=75) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Nuez());
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 75);
@@ -74,7 +74,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if(state.getEnergiaJugador()>=100) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 100);
 				aux.place(i, j, new Lanzaguisante());
@@ -83,7 +83,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if (state.getEnergiaJugador()<50) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.avanzar();
 				res.add(aux);
@@ -108,7 +108,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		if(state.getMapa()[i][9]==null) {
 			if(state.getEnergiaZombie()>=75) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 75);
 				aux.place(i, 9, new ZombieLento());
@@ -117,7 +117,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if(state.getEnergiaZombie()>=100) {
 				aux = new JardinExt();
-				aux.setMapa(state.copyMap());
+				aux.setMapa(state.getMapa());
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 100);
 				aux.setPadre(this.inicial);
 				aux.place(i, 9, new ZombieRapido());
@@ -151,8 +151,8 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 					aux.avanzar();
 					suc.add(aux);
 				}else{
-					for(int i = 0; i < state.getSizeH(); i++) 
-						for(int j = 0; j < state.getSizeW(); j++) 
+					for(int i = 0; i < state.getSizeF(); i++) 
+						for(int j = 0; j < state.getSizeC(); j++) 
 							suc.addAll(generaTurnoJugador(i,j,state));
 				}
 			else
@@ -195,8 +195,8 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		int p=0;
 		int z=0;
 		Personage bicho,zom;
-		for(int i=0;i<state.getSizeH();i++ ) {
-			for(int j=0;j<state.getSizeW()-1;j++ ){
+		for(int i=0;i<state.getSizeF();i++ ) {
+			for(int j=0;j<state.getSizeC()-1;j++ ){
 				bicho=jar[i][j];
 				if(bicho instanceof Nuez || bicho instanceof Lanzaguisante) {
 					p++;
