@@ -55,8 +55,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		JardinExt aux = state;
 		if(state.getMapa()[i][j]==null) {
 			if(state.getEnergiaJugador()>=50) {
-				aux = new JardinExt();
-				aux.setMapa(state.getMapa());
+				aux = state.clone();
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 50);
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Girasol());
@@ -64,8 +63,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 				res.add(aux);
 			}
 			if(state.getEnergiaJugador()>=75) {
-				aux = new JardinExt();
-				aux.setMapa(state.getMapa());
+				aux = state.clone();
 				aux.setPadre(this.inicial);
 				aux.place(i, j, new Nuez());
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 75);
@@ -73,8 +71,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 				res.add(aux);
 			}
 			if(state.getEnergiaJugador()>=100) {
-				aux = new JardinExt();
-				aux.setMapa(state.getMapa());
+				aux = state.clone();
 				aux.setPadre(this.inicial);
 				aux.setEnergiaJugador(state.getEnergiaJugador() - 100);
 				aux.place(i, j, new Lanzaguisante());
@@ -82,8 +79,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 				res.add(aux);
 			}
 			if (state.getEnergiaJugador()<50) {
-				aux = new JardinExt();
-				aux.setMapa(state.getMapa());
+				aux = state.clone();
 				aux.setPadre(this.inicial);
 				aux.avanzar();
 				res.add(aux);
@@ -107,7 +103,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		JardinExt aux = state;
 		if(state.getMapa()[i][9]==null) {
 			if(state.getEnergiaZombie()>=75) {
-				aux = new JardinExt();
+				aux = state.clone();
 				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 75);
@@ -116,7 +112,7 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 				res.add(aux);
 			}
 			if(state.getEnergiaZombie()>=100) {
-				aux = new JardinExt();
+				aux = state.clone();
 				aux.setMapa(state.getMapa());
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 100);
 				aux.setPadre(this.inicial);
@@ -125,7 +121,6 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 				res.add(aux);
 			}
 		}
-		
 		return res;
 	}
 
@@ -146,13 +141,13 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		else{
 			List<JardinExt> suc = new ArrayList<JardinExt>();
 			if(state.getTurno())
-				if(state.getEnergiaJugador() < Math.min(Math.min(new Nuez().getCosto(), new Girasol().getCosto()), new Lanzaguisante().getCosto())){
+				if(state.getEnergiaJugador() < 50){
 					JardinExt aux = state.clone();
 					aux.avanzar();
 					suc.add(aux);
 				}else{
 					for(int i = 0; i < state.getSizeF(); i++) 
-						for(int j = 0; j < state.getSizeC(); j++) 
+						for(int j = 0; j < state.getSizeC()-1; j++) 
 							suc.addAll(generaTurnoJugador(i,j,state));
 				}
 			else

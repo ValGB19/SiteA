@@ -103,7 +103,6 @@ public class Jardin implements State{
 		for (int i = 0; i < mapa.length && empty; i++) //si quedan zombies en el mapa
 			for (int j = 0; j < mapa[0].length && empty ; j++)
 				empty = !(mapa[i][j] instanceof Zombie);
-		
 		res = (getEnergiaZombie() < new ZombieLento().getCosto()) && empty; 
 		return res;
 	}
@@ -128,13 +127,17 @@ public class Jardin implements State{
 		if(!endGame()){
 			for (int i = 0; i < f; i++) {
 				for (int j = 0; j < c; j++) {
-					if (turno)
-						if(mapa[i][j] instanceof Planta)
-							if (mapa[i][j] instanceof Girasol) 
+					if (turno) {
+						if(mapa[i][j] instanceof Planta) {
+							if (mapa[i][j] instanceof Girasol) {
 								energiaJugador = ((Girasol) mapa[i][j]).energia() + energiaJugador;
-							else if (j < c-1 && mapa[i][j+1] instanceof Zombie) 
-								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
-					else {
+							}else {
+								if (j < c-1 && mapa[i][j+1] instanceof Zombie) { 
+									mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano());
+								}
+							}
+						}
+					} else {
 						if(j > 0 && mapa[i][j] instanceof Zombie) {
 							if (mapa[i][j-1] instanceof Planta) {
 								mapa[i][j-1] = ((Planta) mapa[i][j-1]).recibeDano(mapa[i][j].getDano()); 

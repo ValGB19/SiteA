@@ -89,7 +89,7 @@ public class Mein {
 			} else {
 				JardinExt je = new JardinExt(jardin);
 				Problema p = new Problema(je);
-				Juego j = new Juego(3, p);
+				Juego j = new Juego(30, p);
 				je = j.computeSuccessor(je);
 				if (je != null) {
 					jardin.setMapa(je.getMapa());
