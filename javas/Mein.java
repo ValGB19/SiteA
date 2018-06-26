@@ -95,7 +95,7 @@ public class Mein{
 			    Juego j = new Juego(1500,p);
 			    je = j.computeSuccessor(je);
 			    if (je!=null) {
-				    jardin.setMapa(je.copyMap());
+				    jardin.setMapa(je.getMapa());
 				    jardin.changeTurno();
 				    jardin.setEnergiaZombie(je.getEnergiaZombie());
 			    }else {
@@ -127,7 +127,7 @@ public class Mein{
 		if((x>=0)||(x<5)&& (y>=0)||(y<9))
 			return true;
 		else{
-			System.out.println("ingrese valores validos, entre para X: [0..4] e  Y: [0..8]");
+			System.out.println("Ingrese valores validos, entre para X: [0..4] e  Y: [0..8]");
 			return false;
 			}
 	}

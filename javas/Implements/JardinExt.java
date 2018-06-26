@@ -75,7 +75,7 @@ public class JardinExt extends Jardin implements AdversarySearchState{
     		Object[][] otherMap = ((Jardin) other).getMapa();
         	for (int i = 0; i < getSizeW() && res; i++) {
     			for (int j = 0; j < getSizeH() && res; j++) {
-    				res = otherMap[getSizeW()][getSizeH()].equals(this.mapa[getSizeW()][getSizeH()]);
+    				res = otherMap[getSizeW()][getSizeH()].equals(this.mapa[getSizeW()][getSizeH()]); 
     			}
     		}
     	}
