@@ -226,7 +226,7 @@ public class Problema implements AdversarySearchProblem<JardinExt> {
 	 *         for states, is returned.
 	 */
 	public int minValue() {
-		return Integer.MIN_VALUE;
+		return Integer.MIN_VALUE/2;
 	}
 
 	/**
@@ -240,6 +240,6 @@ public class Problema implements AdversarySearchProblem<JardinExt> {
 	 *         value for states, is returned.
 	 */
 	public int maxValue() {
-		return Integer.MAX_VALUE;
+		return Integer.MAX_VALUE/2;
 	}
 }
