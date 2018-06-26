@@ -198,10 +198,10 @@ public class Jardin implements State{
 	 * @post. A text representation of the current state is returned.
 	 */	
 	public String toString(){
-		String res = "energia Jugador: "+energiaJugador+"\n"+"Energia Zombie: "+energiaZombie+"\n";
-		for (int i = 0; i< mapa.length;i++ ) {
+		String res = "Energia Jugador: "+energiaJugador+"\n"+"Energia Zombie: "+energiaZombie+"\n";
+		for (int i = 0; i< f;i++ ) {
 			res += "|";	
-			for (int k = 0; k< mapa[0].length;k++ ) {
+			for (int k = 0; k< c;k++ ) {
 				if (mapa[i][k] == null) {
 					res += "NN"+"|";
 				}else{
@@ -214,6 +214,6 @@ public class Jardin implements State{
 	}
 	
 	protected Jardin clone(){
-		return new Jardin(mapa.clone(),energiaJugador,energiaZombie);
+		return new Jardin(getMapa(),energiaJugador,energiaZombie);
 	}
 }

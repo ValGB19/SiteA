@@ -71,6 +71,7 @@ public class ZombieRapido implements Zombie{
 	}
 	
 	public boolean equals(Personage other) {
+		if (other == null) return false;
 		if (other instanceof ZombieRapido) {
 			return this.getVida() == other.getVida();
 		}

@@ -69,6 +69,7 @@ public class ZombieLento implements Zombie{
 	}
 	
 	public boolean equals(Personage other) {
+		if (other == null) return false;
 		if (other instanceof ZombieLento)
 			return this.getVida() == other.getVida();
 		return false;

@@ -64,6 +64,7 @@ public class Nuez implements Planta{
 	}
 
 	public boolean equals(Personage other) {
+		if (other == null) return false;
 		if (other instanceof Nuez) 
 			return this.getVida() == other.getVida();
 		return false;

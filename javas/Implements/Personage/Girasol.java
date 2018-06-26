@@ -75,6 +75,7 @@ public class Girasol implements Planta{
 	}
 	
 	public boolean equals(Personage other) {
+		if (other == null) return false;
 		if (other instanceof Girasol)
 			return this.getVida() == other.getVida();
 		return false;

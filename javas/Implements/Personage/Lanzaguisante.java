@@ -65,6 +65,7 @@ public class Lanzaguisante implements Planta{
 	}
 	
 	public boolean equals(Personage other){
+		if (other == null) return false;
 		if (other instanceof Lanzaguisante)
 			return this.getVida() == other.getVida();
 		return false;
