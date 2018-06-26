@@ -16,12 +16,13 @@ import javas.Interfaces.AdversaryFramework.AdversarySearchEngine;
 public class Juego extends AdversarySearchEngine<Problema,JardinExt>{
 	
 	public Juego(Problema p) {
-		super(p);
+		problem = p;
 	}
 
 
 	public Juego(int i, Problema p) {
-		super(p,i);
+		problem = p;
+		maxDepth = i;
 	}
 
 

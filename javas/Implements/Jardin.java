@@ -167,11 +167,9 @@ public class Jardin implements State{
     	boolean res = false;
     	if(other instanceof Jardin) {
     		Object[][] otherMap = ((Jardin) other).getMapa();
-        	for (int i = 0; i < f && res; i++) {
-    			for (int j = 0; j < c && res; j++) {
+        	for (int i = 0; i < f && res; i++) 
+    			for (int j = 0; j < c && res; j++) 
     				res = otherMap[i][j].equals(this.mapa[i][j]);
-    			}
-    		}
     	}
     	return res;
     }
