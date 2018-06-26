@@ -117,16 +117,15 @@ public class Jardin implements State{
 	 */
 	public void avanzar() {
 		if(!endGame()){
-			for (int i = 0; i < 5; i++) {
-				for (int j = 0; j < 10; j++) {
-					if (turno) {
-						if(mapa[i][j] instanceof Planta) {
+			for (int i = 0; i < f; i++) {
+				for (int j = 0; j < c; j++) {
+					if (turno)
+						if(mapa[i][j] instanceof Planta)
 							if (mapa[i][j] instanceof Girasol) 
-								energiaJugador += ((Girasol) mapa[i][j]).energia();
-							else if (j < 9 && mapa[i][j+1] instanceof Zombie) 
+								energiaJugador = ((Girasol) mapa[i][j]).energia() + energiaJugador;
+							else if (j < c-1 && mapa[i][j+1] instanceof Zombie) 
 								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
-						}
-					} else {
+					else {
 						if(j > 0 && mapa[i][j] instanceof Zombie) {
 							if (mapa[i][j-1] instanceof Planta) {
 								mapa[i][j-1] = ((Planta) mapa[i][j-1]).recibeDano(mapa[i][j].getDano()); 
@@ -142,7 +141,7 @@ public class Jardin implements State{
 					}
 				}
 			}
-			turno = !turno;
+			changeTurno();
 		}
 	}
 
@@ -159,8 +158,8 @@ public class Jardin implements State{
     	boolean res = false;
     	if(other instanceof Jardin) {
     		Object[][] otherMap = ((Jardin) other).getMapa();
-        	for (int i = 0; i < w && res; i++) {
-    			for (int j = 0; j < h && res; j++) {
+        	for (int i = 0; i < f && res; i++) {
+    			for (int j = 0; j < c && res; j++) {
     				res = otherMap[i][j].equals(this.mapa[i][j]);
     			}
     		}
@@ -168,7 +167,7 @@ public class Jardin implements State{
     	return res;
     }
   
-    public Personage[][] copyMap(){
+    public Personage[][] getMapa(){
 		Personage[][] res = new Personage[5][10];
 		for (int i = 0; i < res.length; i++) {
 			for (int j = 0; j < res[0].length; j++) {

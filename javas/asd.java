@@ -16,5 +16,10 @@ public class asd{
 	    }
 	    System.out.println(p.getSuccessors(je).size());
 	    System.out.println(new ZombieLento().getClass());
+	    int i = 1, j = 1;
+	    i -= 2;
+	    j =- 2;
+	    System.out.println(i);
+	    System.out.println(j);
 	}
 }
