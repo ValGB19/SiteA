@@ -104,7 +104,6 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 		if(state.getMapa()[i][9]==null) {
 			if(state.getEnergiaZombie()>=75) {
 				aux = state.clone();
-				aux.setMapa(state.getMapa());
 				aux.setPadre(this.inicial);
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 75);
 				aux.place(i, 9, new ZombieLento());
@@ -113,7 +112,6 @@ public class Problema implements AdversarySearchProblem<JardinExt>{
 			}
 			if(state.getEnergiaZombie()>=100) {
 				aux = state.clone();
-				aux.setMapa(state.getMapa());
 				aux.setEnergiaZombie(state.getEnergiaZombie() - 100);
 				aux.setPadre(this.inicial);
 				aux.place(i, 9, new ZombieRapido());
