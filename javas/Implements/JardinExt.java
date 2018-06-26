@@ -22,9 +22,9 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	
 	public JardinExt(Jardin p) {
 		padre = p;
-		mapa = p.getMapa();
-		energiaZombie = p.getEnergiaZombie();
-		energiaJugador = p.getEnergiaJugador();
+		setMapa(p.getMapa());
+		setEnergiaZombie(p.getEnergiaZombie());
+		setEnergiaJugador(p.getEnergiaJugador());
 	}
 	
 	public void setPadre(Jardin p){
@@ -37,9 +37,9 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	 * @post. true
 	 */
 	private JardinExt(Personage[][] ma, int ej, int ez) {
-		mapa = ma;
-		energiaJugador = ej;
-		energiaZombie = ez;
+		setMapa(ma);
+		setEnergiaZombie(ej);
+		setEnergiaJugador(ez);
 		padre = null;
 	}
 
@@ -73,9 +73,9 @@ public class JardinExt extends Jardin implements AdversarySearchState{
     	boolean res = false;
     	if(other instanceof Jardin) {
     		Object[][] otherMap = ((Jardin) other).getMapa();
-        	for (int i = 0; i < getSizeW() && res; i++) {
-    			for (int j = 0; j < getSizeH() && res; j++) {
-    				res = otherMap[getSizeW()][getSizeH()].equals(this.mapa[getSizeW()][getSizeH()]);
+        	for (int i = 0; i < getSizeF() && res; i++) {
+    			for (int j = 0; j < getSizeC() && res; j++) {
+    				res = otherMap[i][j].equals(this.getMapa()[i][j]);
     			}
     		}
     	}
@@ -83,6 +83,6 @@ public class JardinExt extends Jardin implements AdversarySearchState{
 	}
 
 	protected JardinExt clone(){
-		return new JardinExt(mapa.clone(),getEnergiaJugador(),getEnergiaZombie());
+		return new JardinExt(getMapa(),getEnergiaJugador(),getEnergiaZombie());
 	}
 }
