@@ -15,26 +15,17 @@ import javas.Interfaces.*;
 
 public class Jardin implements State{
 	
-	private int w;
-	private int h;
-	protected Personage[][] mapa;
-	protected int energiaZombie;
-	protected int energiaJugador;
+	private int c;
+	private int f;
+	private Personage[][] mapa;
+	private int energiaZombie;
+	private int energiaJugador;
 	private boolean turno = false; //false zombie true jugador
 	
-
-	public Jardin(int j, int k){
-		w = 10;
-		h = 5;
-		mapa = new Personage[h][w];
-		energiaJugador = 100;
-		energiaZombie = 1500;
-	}
-	
 	public Jardin(){
-		w = 10;
-		h = 5;
-		mapa = new Personage[h][w];
+		c = 10;
+		f = 5;
+		mapa = new Personage[f][c];
 		energiaJugador = 100;
 		energiaZombie = 1500;
 	}
@@ -81,20 +72,16 @@ public class Jardin implements State{
 		energiaJugador = e;
 	}
 	
-	public Personage[][] getMapa() {
-		return mapa;
-	}
-	
 	public void setMapa(Personage[][] j) {
 		mapa = j;
 	}
 	
-	public int getSizeW() {
-		return w;
+	public int getSizeF() {
+		return f;
 	}
 	
-	public int getSizeH() {
-		return h;
+	public int getSizeC() {
+		return c;
 	}
 
 	/** 
@@ -108,16 +95,15 @@ public class Jardin implements State{
 		boolean empty = true;
 		
 		for (int i = 0; i < mapa.length && !res; i++) { //algun zombie al final
-			res |= mapa[i][0] instanceof Zombie;
+			res = mapa[i][0] instanceof Zombie;
 		}
 		if(res)
 			return res;
 		
-		for (int i = 0; i < mapa.length && empty; i++) { //si quedan zombies en el mapa
-			for (int j = 0; j < mapa[0].length && empty ; j++) {
-				empty &= !(mapa[i][j] instanceof Zombie);
-			}
-		}
+		for (int i = 0; i < mapa.length && empty; i++) //si quedan zombies en el mapa
+			for (int j = 0; j < mapa[0].length && empty ; j++)
+				empty = !(mapa[i][j] instanceof Zombie);
+		
 		res = (getEnergiaZombie() < new ZombieLento().getCosto()) && empty; 
 		return res;
 	}
@@ -135,11 +121,10 @@ public class Jardin implements State{
 				for (int j = 0; j < 10; j++) {
 					if (turno) {
 						if(mapa[i][j] instanceof Planta) {
-							if (mapa[i][j] instanceof Girasol) {
+							if (mapa[i][j] instanceof Girasol) 
 								energiaJugador += ((Girasol) mapa[i][j]).energia();
-							}else if (j < 9 && mapa[i][j+1] instanceof Zombie) {
+							else if (j < 9 && mapa[i][j+1] instanceof Zombie) 
 								mapa[i][j+1] = ((Zombie) mapa[i][j+1]).recibeDano(mapa[i][j].getDano()); 
-							}
 						}
 					} else {
 						if(j > 0 && mapa[i][j] instanceof Zombie) {

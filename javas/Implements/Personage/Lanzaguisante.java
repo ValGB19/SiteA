@@ -18,12 +18,12 @@ public class Lanzaguisante implements Planta{
 	private final int costo = 100;
 	private int vida = 60;
 	
+	public Lanzaguisante() {
+		
+	}
+
 	public Lanzaguisante(int n) {
 		vida=n;
-	}
-	
-	public Lanzaguisante() {
-
 	}
 
 	/******************************************
@@ -55,9 +55,8 @@ public class Lanzaguisante implements Planta{
 	 */
 	public Personage recibeDano(int d){
 		vida -= d;
-		if (vida > 0) {
+		if (vida > 0)
 			return this;
-		}
 		return null;
 	}
 	
@@ -66,9 +65,8 @@ public class Lanzaguisante implements Planta{
 	}
 	
 	public boolean equals(Personage other){
-		if (other instanceof Lanzaguisante) {
+		if (other instanceof Lanzaguisante)
 			return this.getVida() == other.getVida();
-		}
 		return false;
 	}
 	

@@ -59,9 +59,8 @@ public class ZombieLento implements Zombie{
 	 */
 	public Personage recibeDano(int d) {
 		vida -= d;
-		if (vida > 0) {
+		if (vida > 0)
 			return this;
-		}
 		return null;
 	}
 	
@@ -70,9 +69,8 @@ public class ZombieLento implements Zombie{
 	}
 	
 	public boolean equals(Personage other) {
-		if (other instanceof ZombieLento) {
+		if (other instanceof ZombieLento)
 			return this.getVida() == other.getVida();
-		}
 		return false;
 	}
 	

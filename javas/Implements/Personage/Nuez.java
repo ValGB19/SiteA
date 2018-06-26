@@ -54,9 +54,8 @@ public class Nuez implements Planta{
 	 */
 	public Personage recibeDano(int d){
 		vida -= d;
-		if (vida > 0) {
+		if (vida > 0)
 			return this;
-		}
 		return null;
 	}
 	
@@ -65,9 +64,8 @@ public class Nuez implements Planta{
 	}
 
 	public boolean equals(Personage other) {
-		if (other instanceof Nuez) {
+		if (other instanceof Nuez) 
 			return this.getVida() == other.getVida();
-		}
 		return false;
 	}
 	
